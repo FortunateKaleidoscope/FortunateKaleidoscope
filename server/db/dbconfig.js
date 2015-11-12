@@ -49,5 +49,5 @@ module.exports = {
   User: User,
   Snippet: Snippet,
   Tag: Tag,
-  SnippetTag, SnippetTag
+  SnippetTag: SnippetTag
 };
