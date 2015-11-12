@@ -13,11 +13,11 @@ describe('Routes', function(done){
   });
   it('should show users page', function(done){
     request(app)
-      .get('/user/1')
+      .get('/api/user/lauren')
       .expect(200);
 
     request(app)
-      .get('/user/2')
+      .get('/api/user/yilen')
       .expect(200, done);
   });
   it('should redirect user to github on login', function (done) {
@@ -27,7 +27,7 @@ describe('Routes', function(done){
   });
   it('should return an array of snippets from the server', function(done){
     request(app)
-      .get('/api/snippets')
+      .get('/api/topten')
       .expect(200)
       .end(function (err, res) {
         if (err) {
