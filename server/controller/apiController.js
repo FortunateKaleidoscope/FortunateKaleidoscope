@@ -12,7 +12,10 @@ module.exports = {
     res.send(201);
   },
   writeSnippet: function (req, res) {
-    dummyData.push(req.body);
-    res.json(dummyData);
+    // dummyData.push(req.body);
+    // res.json(dummyData);
+    helpers.writeSnippet(req, function(res) {
+
+    });
   }
 };

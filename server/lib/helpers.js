@@ -37,8 +37,8 @@ module.exports = {
       where: { username: user }
     }).then(function (result) {
       post.userId = result[0].id;
-      Snippet.create(post).then(function(){
-        cb();
+      Snippet.create(post).then(function(post){
+        cb(post);
       });
     });
   },
