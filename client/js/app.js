@@ -1,6 +1,6 @@
 //this file is all done ---- dont mess with it
 
-angular.module('sniphub', ['ngRoute','ui.router','sniphub.services'])
+angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.snippets','sniphub.addSnippet', 'sniphub.auth'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
   $urlRouterProvider.otherwise('snippets');
   $stateProvider
