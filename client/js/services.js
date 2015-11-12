@@ -19,7 +19,7 @@ angular.module('sniphub.services', [])
     //tags should be an array
     return $http({
       method: 'POST',
-      url: '/api/snippets',
+      url: '/api/snippet',
       data: { 
               "user" : user,
               "text" : text,
@@ -30,10 +30,10 @@ angular.module('sniphub.services', [])
     });
   };
   var fetchByUser = function ( user ) {
+    // /api/user/:userId -> 
     return $http({
-      method: 'POST',
-      url: '/api/users',
-      data: { "user" : user }
+      method: 'GET',
+      url: '/api/user/' + user,
     }).then(function successCallback ( response ) {
       //store all links in scope.data
       return response;

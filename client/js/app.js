@@ -8,30 +8,30 @@ angular.module('sniphub', ['ngRoute','ui.router','sniphub.services'])
       url: '/snippets',
       controller: 'SnippetsController',
       views: {
-        'top' : { templateUrl: 'navbar.html'},
-        'main' : { templateUrl: 'snippets.html' }
+        'top' : { templateUrl: 'html/navbar.html'},
+        'main' : { templateUrl: 'html/snippets.html' }
       }
     })
     .state('addSnippet', {
       url: '/addSnippet',
       controller: 'AddSnippetController',
       views: {
-        'top' : { templateUrl: 'navbar.html'},
-        'main' : { templateUrl: 'addSnippet.html' }
+        'top' : { templateUrl: 'html/navbar.html'},
+        'main' : { templateUrl: 'html/addSnippet.html' }
       }
     })
     .state('signup', {
       url: '/signup',
       controller: 'AuthController',
       views: {
-        'main' : { templateUrl: 'signup.html' }
+        'main' : { templateUrl: 'html/signup.html' }
       }
     })
     .state('signin', {
       url: '/signin',
       controller: 'AuthController',
       views: {
-        'main' : { templateUrl: 'signin.html' }
+        'main' : { templateUrl: 'html/signin.html' }
       }
     });
 
