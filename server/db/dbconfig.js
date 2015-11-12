@@ -36,21 +36,18 @@ var Tag = sequelize.define('tags', {
 var SnippetTag = sequelize.define('snippet_tag', {
 
 });
+
+sequelize.sync();
 // Creates one to many relationship between User and Snippets table
-Snippets.belongsTo(User);
-User.hasMany(Snippet, {as: "Snippet"})
-.belongsToMany(Tag, { through: 'snippet_tag'});
+Snippet.belongsTo(User, {foreignKey: 'userId'});
+User.hasMany(Snippet, {foreignKey: 'userId'});
+Snippet.belongsToMany(Tag, { through: 'snippet_tag'});
 // Creates many to many relationship between Snippets and Taga
 Tag.belongsToMany(Snippet, { through: 'snippet_tag'});
-
-
-User.sync();
-Snippet.sync();
-Tag.sync();
-SnippetTag.sync();
 
 module.exports = {
   User: User,
   Snippet: Snippet,
-  Tag: Tag
+  Tag: Tag,
+  SnippetTag, SnippetTag
 };
