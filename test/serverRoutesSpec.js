@@ -18,4 +18,7 @@ describe('Routes', function(done){
       .get('/auth/github')
       .expect(302, done);
   });
+  it('it should not redirect', function(done){
+    
+  });
 });
