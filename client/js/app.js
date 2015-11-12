@@ -1,6 +1,6 @@
 //this file is all done ---- dont mess with it
 
-angular.module('sniphub', ['ngRoute','ui.router'])
+angular.module('sniphub', ['ngRoute','ui.router','sniphub.services'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
   $urlRouterProvider.otherwise('snippets');
   $stateProvider
@@ -8,30 +8,30 @@ angular.module('sniphub', ['ngRoute','ui.router'])
       url: '/snippets',
       controller: 'SnippetsController',
       views: {
-        'top' : { templateUrl: 'app/navbar.html'},
-        'main' : { templateUrl: 'app/snippets/snippets.html' }
+        'top' : { templateUrl: 'navbar.html'},
+        'main' : { templateUrl: 'snippets.html' }
       }
     })
     .state('addSnippet', {
       url: '/addSnippet',
       controller: 'AddSnippetController',
       views: {
-        'top' : { templateUrl: 'app/navbar.html'},
-        'main' : { templateUrl: 'app/addSnippet/addSnippet.html' }
+        'top' : { templateUrl: 'navbar.html'},
+        'main' : { templateUrl: 'addSnippet.html' }
       }
     })
     .state('signup', {
       url: '/signup',
       controller: 'AuthController',
       views: {
-        'main' : { templateUrl: 'app/auth/signup.html' }
+        'main' : { templateUrl: 'signup.html' }
       }
     })
     .state('signin', {
       url: '/signin',
       controller: 'AuthController',
       views: {
-        'main' : { templateUrl: 'app/auth/signin.html' }
+        'main' : { templateUrl: 'signin.html' }
       }
     });
 
