@@ -3,7 +3,6 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var passport = require('./passport');
 var session = require('express-session');
-var authMiddleware = require('./authMiddleware');
 
 var SESSION_SECRET = require('../lib/secrets').SESSION_SECRET;
 
