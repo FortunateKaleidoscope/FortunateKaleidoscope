@@ -10,7 +10,6 @@
 var mysql = require('mysql');
 var Sequelize = require('sequelize');
 var secret = require('../lib/secrets').sql;
-
 // Connection to MySql database using database named sniphub
 
 var sequelize = new Sequelize('sniphub', 'root', secret);
@@ -30,7 +29,6 @@ var Snippets = sequelize.define('snippets', {
   forkedCount : Sequelize.INTEGER
 });
 
-
 var Tags = sequelize.define('tags', {
   tagname: Sequelize.STRING
 });
@@ -46,6 +44,7 @@ Snippets.belongsTo(User);
 // Creates many to many relationship between Snippets and Tags
 Snippets.belongsToMany(Tags, { through: 'snippet_tag'});
 Tags.belongsToMany(Snippets, { through: 'snippet_tag'});
+
 
 User.sync();
 Snippets.sync();
