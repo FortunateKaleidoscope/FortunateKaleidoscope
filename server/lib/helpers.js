@@ -1,12 +1,11 @@
 'use strict';
 var Promise = require('bluebird');
-var User = require('../db/dbconfig').User;
+var db = require('../db/dbconfig');
 
 module.exports = {
   getUser: function (profile) {
-    console.log(profile);
     return new Promise(function (resolve, reject) {
-      User.findOrCreate({
+      db.User.findOrCreate({
         where: {
           username: profile.username,
           imgUrl: profile._json.avatar_url,
@@ -15,5 +14,14 @@ module.exports = {
         resolve(user, created);
       }).catch(reject);
     });
-  }
+  },
+  writeSnippet: function (req) {
+    return new Promise(function (resolve) {
+      db.Snippets.
+    });
+  },
+  getSnippets: function(){
+    return [];
+  },
+
 };
