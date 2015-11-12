@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope",
   "dependencies": {
+    "mysql": "^2.9.0",
     "sequelize": "^3.13.0"
   }
 }
