@@ -12,7 +12,7 @@ describe("User Table", function () {
     sequelize.sync({force: true})
     .then( function () {
       done();
-    }); 
+    });
   });
 
 
@@ -98,8 +98,8 @@ describe("Snippets Table", function () {
     });
   });
 
-describe("Integration of tables", function () {
-  
+xdescribe("Integration of tables", function () {
+
   beforeEach(function ( done ) {
     var sequelize = new Sequelize('sniphub', 'root', 'test');
     db.Tags.destroy({ where: { tagname: "javascript"} });
@@ -108,16 +108,16 @@ describe("Integration of tables", function () {
     sequelize.sync({force: true}).then( function () {
       db.User.create({username: "fred"} )
     })
-    .then( function () { 
+    .then( function () {
       done();
     });
   });
 
   it("Should correctly link associations across tables", function (done) {
-    
+
       db.Snippets.create({text: "awesome text snippet", User: { username: "fred"}, Tags: [{ tagname: "javascript" }, {tagname: 'awesome'}]}, { include: [ db.User, db.Tags]})
-    .then( function () { 
-        db.Snippets.find({ where: { username : "fred" }, include : [db.User, db.Tags] }); 
+    .then( function () {
+        db.Snippets.find({ where: { username : "fred" }, include : [db.User, db.Tags] });
       })
       .then( function ( snippet ) {
         console.log(snippet);
