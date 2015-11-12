@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -49,6 +51,8 @@ module.exports = function(grunt) {
     'run'
   ]);
   grunt.registerTask('doccify', ['docco']);
-  grunt.registerTask('run', ['nodemon'])
+  grunt.registerTask('run', ['nodemon']);
+  grunt.registerTask('test', ['jshint', 'mochaTest']);
+
 
 };
