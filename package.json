@@ -1,0 +1,20 @@
+{
+  "name": "SnipHub",
+  "version": "0.0.1",
+  "description": "Github for Snippets",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "grunt test",
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope/issues"
+  },
+  "homepage": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope"
+}
