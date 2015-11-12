@@ -25,6 +25,14 @@ module.exports = function(grunt) {
         },
         src: ['test/**/*.js']
       }
+    },
+    docco: {
+      debug: {
+        src: ['client/**/*.js', 'server/**/*.js'],
+        options: {
+          output: 'docs/'
+        }
+      }
     }
   });
 
@@ -32,6 +40,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-docco');
 
   // Default task(s).
   grunt.registerTask('default', [
@@ -39,6 +48,7 @@ module.exports = function(grunt) {
     'mochaTest',
     'run'
   ]);
+  grunt.registerTask('doccify', ['docco']);
   grunt.registerTask('run', ['nodemon'])
 
 };
