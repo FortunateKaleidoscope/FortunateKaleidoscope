@@ -10,6 +10,7 @@ module.exports = function (app, express) {
   var authRoute = express.Router();
   var userRoute = express.Router();
   var publicRoute = express.Router();
+  var apiRoute = express.Router();
   // Logger
   app.use(morgan('dev'));
   // Parses posts requests
@@ -18,7 +19,8 @@ module.exports = function (app, express) {
 
   // Uses sessions
   app.use(session({
-    secret: SESSION_SECRET
+    secret: SESSION_SECRET,
+    resave: true
   }));
 
   // Inits passport sessions
@@ -34,7 +36,10 @@ module.exports = function (app, express) {
   app.use('/auth', authRoute);
   require('./routes/authRoute')(authRoute);
 
-  app.use('/api/user', userRoute);
+  app.use('/user', userRoute);
   require('./routes/userRoute')(userRoute);
+
+  app.use('/api', apiRoute);
+  require('./routes/apiRoute')(apiRoute);
 
 };
