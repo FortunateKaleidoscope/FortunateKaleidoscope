@@ -1,5 +1,6 @@
 'use strict';
-var writeSnippet = require('../../lib/helpers').writeSnippet;
+var writeSnippet = require('../lib/helpers').writeSnippet;
+var dummyData = require('../../test/dummyData')
 
 module.exports = {
   userPage: function (req, res) {
@@ -8,8 +9,10 @@ module.exports = {
   },
   createSnippet: function (req, res) {
     // TODO: receive snippet, save to DB
-    writeSnippet(req).then(function (data) {
-      res.send(201);
-    });
+    // writeSnippet(req).then(function (data) {
+    //   res.send(201);
+    // });
+    dummyData.push(req.body);
+    res.json(dummyData);
   }
 };
