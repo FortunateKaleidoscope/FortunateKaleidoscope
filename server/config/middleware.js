@@ -9,6 +9,7 @@ var SESSION_SECRET = require('../lib/secrets').SESSION_SECRET;
 module.exports = function (app, express) {
   var authRoute = express.Router();
   var userRoute = express.Router();
+  var publicRoute = express.Router();
   // Logger
   app.use(morgan('dev'));
   // Parses posts requests
@@ -27,14 +28,13 @@ module.exports = function (app, express) {
   // Establish static route
   app.use(express.static(__dirname + '/../../client'));
 
-  app.get('/', function (req, res) {
-    res.send('OK');
-  });
+  app.use('/', publicRoute);
+  require('./routes/publicRoute')(publicRoute);
 
   app.use('/auth', authRoute);
-  require('./routes/authRoute.js')(authRoute);
+  require('./routes/authRoute')(authRoute);
 
   app.use('/api/user', userRoute);
-  require('./routes/userRoute.js')(userRoute);
+  require('./routes/userRoute')(userRoute);
 
 };
