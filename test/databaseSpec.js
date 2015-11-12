@@ -127,4 +127,5 @@ describe("Integration of tables", function () {
       });
     });
   });
+
 });
