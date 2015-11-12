@@ -1,3 +1,5 @@
+//this file is all done ---- dont mess with it
+
 angular.module('sniphub', ['ngRoute','ui.router'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
   $urlRouterProvider.otherwise('snippets');
