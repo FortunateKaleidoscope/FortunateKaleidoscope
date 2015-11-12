@@ -19,7 +19,7 @@ module.exports = {
     });
   },
 
-  writeSnippet: function (req) {
+  writeSnippet: function (req, cb) {
     var snippet = escape(req.body.snippet);
     // takes the array of body tags and turns them into objects
     var tags = req.body.tags.map(function (tag) {
@@ -32,12 +32,14 @@ module.exports = {
     };
 
     var user = req.user;
-    
+
     User.findOrCreate({
       where: { username: user }
     }).then(function (result) {
       post.userId = result[0].id;
-      Snippet.create(post);
+      Snippet.create(post).then(function(){
+        cb();
+      });
     });
   },
 
@@ -50,7 +52,7 @@ module.exports = {
       return result;
     });
   },
-  
+
   searchSnippets: function(searchTerm){
     return Promise.map(searchTerm.split(' '), function (term) {
       return db.Snippets.findAll({ include: [{
