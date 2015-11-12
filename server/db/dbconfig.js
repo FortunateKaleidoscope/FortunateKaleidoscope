@@ -7,7 +7,6 @@
 
 
 // Declare dependencies
-var mysql = require('mysql');
 var Sequelize = require('sequelize');
 var secret = require('../lib/secrets').sql;
 // Connection to MySql database using database named sniphub
@@ -50,3 +49,9 @@ User.sync();
 Snippets.sync();
 Tags.sync();
 SnippetTag.sync();
+
+module.exports = {
+  User: User,
+  Snippets: Snippets,
+  Tags: Tags
+};
