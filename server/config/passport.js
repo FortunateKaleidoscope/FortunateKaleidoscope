@@ -1,3 +1,4 @@
+'use strict';
 var passport = require('passport');
 var session = require('express-session');
 var GitHubStrategy = require('passport-github2').Strategy;
