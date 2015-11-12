@@ -10,7 +10,6 @@ module.exports = {
         where: {
           username: profile.username,
           imgUrl: profile._json.avatar_url,
-          password: 'random'
         }
       }).spread(function (user, created) {
         resolve(user, created);
