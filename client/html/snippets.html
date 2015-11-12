@@ -1,0 +1,11 @@
+<div ng-controller="SnippetsController as Snippets" id='container' >
+    <input ng-model="searchBox"/>
+  <!-- Your html here -->
+    <div ng-repeat="snippet in data.snippets | filter:searchBox" class="snippet">
+        <!-- edit this stuff -->
+        <div class='info'>
+        <div class='visits'><span class='count'>{{snippet.forks}}</span>Visits</div>
+        <div class='title'>{{snippet.title}}</div>
+        <div class='original'>{{snippet.text}}</div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div ng-controller='AddSnippetController' id='container'>
+  <form name ="AddSnippetForm">
+    <!-- text -->
+    <input required class="text" type="text" name="text" ng-model='inputEntry' />
+    <!-- tags -->
+    <!-- user can add multiple tags and they show up under text box-->
+    <input required class="text" type="text" name="" ng-class="{ 'error' : shortenForm.url.$error.required || !shortenForm.url.$valid }" ng-model='inputEntry' />
+    <input type='submit' value="Shorten" ng-disabled="shortenForm.input.$error.url || shortenForm.input.$error.required"ng-click='addLink(inputEntry)' ></input>
+  </form>
+  <div ng-show="shortenForm.url.$error.required">Please enter a thing</div>
+  <div ng-show="shortenForm.url.$error.url">Not a valid thing</div>
+</div>
+
+<!-- 
+
+can use for error messages later:
+
+ng-class="{ 'error' : AddSnippetForm.text.$error.required || !AddSnippetForm.url.$valid }"
+
+
+ -->
