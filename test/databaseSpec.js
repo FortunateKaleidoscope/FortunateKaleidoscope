@@ -121,6 +121,4 @@ describe("Integration of tables", function () {
         expect(snippet.text).to.equal("awesome text snippet")
       });
     });
-
-
 });
