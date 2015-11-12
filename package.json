@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope",
   "dependencies": {
+    "express": "^4.13.3",
+    "passport": "^0.3.2",
     "sequelize": "^3.13.0"
   }
 }
