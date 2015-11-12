@@ -23,8 +23,10 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      getUser(profle).then(function(user) {
-        done(null, profile);
+      getUser(profile).then(function(user) {
+        done(null, user);
+      }).catch(function(err) {
+        console.log(err);
       });
     });
   }
