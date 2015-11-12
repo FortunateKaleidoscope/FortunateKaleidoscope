@@ -53,6 +53,28 @@ module.exports = {
     });
   },
 
+  getSnippetsMostRecent: function() {
+    return db.Snippets.findAll({
+      limit: 10,
+      order: ["createdAt"],
+      include: [{
+        model: User
+      }]
+    }).then(function ( result ) {
+      return result;
+    });
+  },
+
+  getSnippetsByUser: function ( user ) {
+    return db.Users.find({
+      where: {
+        username: user
+      }
+    }).then( function ( result ) {
+      
+    })
+  },
+  
   searchSnippets: function(searchTerm){
     return Promise.map(searchTerm.split(' '), function (term) {
       return db.Snippets.findAll({ include: [{
