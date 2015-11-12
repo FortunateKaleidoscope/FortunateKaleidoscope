@@ -9,7 +9,7 @@ module.exports = function (app) {
   app.get('/github/callback',
     passport.authenticate('github', { failureRedirect: '/' }),
     function(req, res) {
-      // TODO: Get user id, redirect to user page
-      res.redirect('/');
+      console.log(req.user.id);
+      res.redirect('/api/user/' + req.user.id);
   });
 }
