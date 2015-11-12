@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope/issues"
   },
-  "homepage": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope"
+  "homepage": "https://github.com/FortunateKaleidoscope/FortunateKaleidoscope",
+  "dependencies": {
+    "sequelize": "^3.13.0"
+  }
 }
