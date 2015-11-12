@@ -10,8 +10,5 @@ module.exports = {
     //    });
     // res.download('OK')
     res.send('OK');
-  },
-  downloadUsersSnippets: function (req, res) {
-    
   }
 }
