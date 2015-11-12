@@ -8,7 +8,6 @@ var SESSION_SECRET = require('../lib/secrets').SESSION_SECRET;
 
 module.exports = function (app, express) {
   var authRoute = express.Router();
-  var userRoute = express.Router();
   var publicRoute = express.Router();
   var apiRoute = express.Router();
   // Logger
@@ -36,8 +35,8 @@ module.exports = function (app, express) {
   app.use('/auth', authRoute);
   require('./routes/authRoute')(authRoute);
 
-  app.use('/user', userRoute);
-  require('./routes/userRoute')(userRoute);
+  // app.use('/user', userRoute);
+  // require('./routes/userRoute')(userRoute);
 
   app.use('/api', apiRoute);
   require('./routes/apiRoute')(apiRoute);
