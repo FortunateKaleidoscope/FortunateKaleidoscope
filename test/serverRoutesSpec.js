@@ -1,8 +1,7 @@
 var request = require('supertest');
 var expect = require('chai').expect;
-var app = require('./mockAuth').app;
-var login = require('./mockAuth').login;
-var logout = require('./mockAuth').logout;
+var app = require('../server/app');
+
 
 
 describe('Routes', function(done){
@@ -40,23 +39,6 @@ describe('Routes', function(done){
         expect(res.body[0]).to.have.property('title');
         expect(res.body[0]).to.have.property('tags');
         expect(res.body[0]).to.have.property('createdBy');
-        done();
-      });
-  });
-  it('should accept post requests', function(done){
-    login(this.user);
-    console.log(this.user);
-    request(app)
-      .post('/user/createSnippet')
-      .send({snippet: 'asdf', title: 'my cool snip', tags: ['a', 'b', 'c'], createdBy: 'bob'})
-      .end(function(err, res) {
-        console.log(res.body);
-        expect(res.body).to.be.an('object');
-        expect(res.body[0]).to.have.property('snippet');
-        expect(res.body[0]).to.have.property('title');
-        expect(res.body[0]).to.have.property('tags');
-        expect(res.body[0]).to.have.property('createdBy');
-        logout();
         done();
       });
   });
