@@ -5,10 +5,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      files: [
-        // Add filespec list here
-        'Gruntfile.js', 'client/**/*.js', 'server/**/*.js'
-        // find all files inside views
+      src: [
+        'Gruntfile.js', './client/js/app.js', 'server/**/*.js'
       ],
       options: {
         force: 'true',
