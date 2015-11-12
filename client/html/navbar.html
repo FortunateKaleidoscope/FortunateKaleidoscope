@@ -1,0 +1,10 @@
+<!-- done -->
+<div class='navigation'>
+  <ul>
+    <li><h1>SnipHub</h1></li>
+    <li><a ui-sref='snippets' class='index'>Snippets</a></li>
+    <li><a ui-sref='addSnippet' class='create'>Add Snippet</a></li>
+  </ul>
+  <div ng-controller='AuthController'>
+    <a ng-click="signout()" ui-sref='signin' class='logout'>Logout</a>
+</div>
