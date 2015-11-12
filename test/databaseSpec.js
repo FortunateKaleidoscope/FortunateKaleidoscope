@@ -17,9 +17,8 @@ describe("User Table", function () {
 
 
   it("Should allow users to be created", function (done) {
-    db.User.create({username: "fred", password: "123"}).then(function () {
+    db.User.create({username: "fred"}).then(function () {
       db.User.findOne({ where: { username : "fred"} }).then(function (user) {
-        expect(user.password).to.equal('123');
         expect(user.username).to.equal('fred');
         done();
       });
@@ -27,7 +26,7 @@ describe("User Table", function () {
   });
 
   it("Should allow users to be deleted", function (done) {
-    db.User.create({username: "fred", password: "123"})
+    db.User.create({username: "fred"})
     .then( function () { db.User.destroy({ where: { username: "fred" } }) })
     .then( function () { db.User.findOne({ where: { username: "fred" } }) })
     .then( function (user) {
@@ -68,16 +67,16 @@ describe("Snippets Table", function () {
     });
   });
 
-describe("Tags Table", function () {
-  beforeEach(function ( done ) {
-    var sequelize = new Sequelize('sniphub', 'root', 'test');
-    db.Tags.destroy({ where: { tagname: "javascript"}
-    });
-    sequelize.sync({force: true})
-    .then( function () {
-      done();
-    });
-});
+  describe("Tags Table", function () {
+    beforeEach(function ( done ) {
+      var sequelize = new Sequelize('sniphub', 'root', 'test');
+      db.Tags.destroy({ where: { tagname: "javascript"}
+      });
+      sequelize.sync({force: true})
+      .then( function () {
+        done();
+      });
+  });
 
     it("Should allow tags to be created", function (done) {
       db.Tags.create({tagname: "javascript" }).then(function () {
@@ -100,25 +99,32 @@ describe("Tags Table", function () {
   });
 
 describe("Integration of tables", function () {
+  
   beforeEach(function ( done ) {
     var sequelize = new Sequelize('sniphub', 'root', 'test');
     db.Tags.destroy({ where: { tagname: "javascript"} });
     db.User.destroy({ where : {username: "fred" } });
     db.Snippets.destroy({ where: {text: "awesome text snippet"}});
-    sequelize.sync({force: true})
-    .then( function () {
+    sequelize.sync({force: true}).then( function () {
+      db.User.create({username: "fred"} )
+    })
+    .then( function () { 
       done();
     });
   });
 
   it("Should correctly link associations across tables", function (done) {
-      db.Snippets.create({text: "awesome text snippet", User: { username: "fred"}, Tags: { tagname: "javascript" }}, { include: [User, Tags]})
-      .then( function () { 
-        db.Snippets.findOne({ where: { text: "awesome text snippet" } }); 
+    
+      db.Snippets.create({text: "awesome text snippet", User: { username: "fred"}, Tags: [{ tagname: "javascript" }, {tagname: 'awesome'}]}, { include: [ db.User, db.Tags]})
+    .then( function () { 
+        db.Snippets.find({ where: { username : "fred" }, include : [db.User, db.Tags] }); 
       })
       .then( function ( snippet ) {
+        console.log(snippet);
         expect(snippet.username).to.equal("fred");
-        expect(snippet.text).to.equal("awesome text snippet")
+        expect(snippet.text).to.equal("awesome text snippet");
+        done();
       });
     });
+  });
 });

@@ -19,7 +19,6 @@ var User = sequelize.define('users', {
     type: Sequelize.STRING,
     unique: true
   },
-  password: Sequelize.STRING,
   imgUrl: Sequelize.STRING
 });
 
