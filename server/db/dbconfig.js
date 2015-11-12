@@ -50,3 +50,9 @@ User.sync();
 Snippets.sync();
 Tags.sync();
 SnippetTag.sync();
+
+module.exports = {
+  User: User,
+  Snippets: Snippets,
+  Tags: Tags
+};
