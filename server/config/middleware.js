@@ -27,7 +27,7 @@ module.exports = function (app, express) {
   // Establish static route
   app.use(express.static(__dirname + '/../../client'));
 
-  app.use('/', function (req, res) {
+  app.get('/', function (req, res) {
     res.send('OK');
   });
 
@@ -35,6 +35,6 @@ module.exports = function (app, express) {
   require('./routes/authRoute.js')(authRoute);
 
   app.use('/api/user', userRoute);
-  require('./routes/userRoute.js')(authRoute);
+  require('./routes/userRoute.js')(userRoute);
 
 };

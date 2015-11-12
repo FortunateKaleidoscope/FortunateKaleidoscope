@@ -9,6 +9,7 @@
 // Declare dependencies
 var Sequelize = require('sequelize');
 var secret = require('../lib/secrets').sql;
+var mysql = require('mysql');
 // Connection to MySql database using database named sniphub
 
 var sequelize = new Sequelize('sniphub', 'root', secret);
