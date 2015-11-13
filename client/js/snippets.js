@@ -3,7 +3,24 @@ angular.module('sniphub.snippets', [])
 
 .controller('SnippetsController', function ($scope, $location, SniphubServices) {
 
-  $scope.snippets = {};
+  $scope.snippets = [
+    {
+      user: "lauren",
+      text: "a really cool snippet"
+    },
+    {
+      user: "todd",
+      text: "awesome snippet"
+    },
+    {
+      user: "todd",
+      text: "awesome snippet"
+    },
+    {
+      user: "todd",
+      text: "awesome snippet"
+    }
+  ];
   $scope.fetchTopTen = function () {
     //call factory function
     SniphubServices.fetchTopTen()
