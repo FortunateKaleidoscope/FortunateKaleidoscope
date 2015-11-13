@@ -25,7 +25,7 @@ angular.module('sniphub.snippets', [])
     //call factory function
     SniphubServices.fetchTopTen()
       .then(function ( snippets ) {
-        $scope.data = snippets
+        $scope.snippets = snippets.data;
       });
   };
   $scope.fetchByUser = function ( user ) {
