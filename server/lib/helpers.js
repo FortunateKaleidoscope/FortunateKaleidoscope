@@ -72,9 +72,10 @@ module.exports = {
         username: user
       }
     }).then(function (user) {
+      var id = user.get('id');
       Snippet.findAll({
         where : {
-          userId : user[0].id
+          userId : id
         },
         include: [{
           model: User
