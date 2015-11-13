@@ -43,17 +43,50 @@ module.exports = {
     }).catch(cb);
   },
 
-  getSnippets: function(){
+  getSnippets: function () {
     return db.Snippets.findAll({
       include: [{
         model: User
       }]
-    }).then(function ( result ) {
+    }).then(function (result) {
       return result;
     });
   },
 
-  searchSnippets: function(searchTerm){
+  getSnippetsMostRecent: function () {
+    //Search all snippets, limit 10, ordered by createdAt date
+    return Snippet.findAll({
+      limit: 10,
+      order: ['createdAt', 'DESC'],
+      include: [{
+        model: User
+      }]
+    }).then(function (result) {
+      return result;
+    });
+  },
+
+  getSnippetsByUser: function (user) {
+    return User.find({
+      where: {
+        username: user
+      }
+    }).then(function (user) {
+      var id = user.get('id');
+      Snippet.findAll({
+        where : {
+          userId : id
+        },
+        include: [{
+          model: User
+        }]
+      }).then(function (result) {
+        return result;
+      });
+    });
+  },
+  
+  searchSnippets: function (searchTerm) {
     return Promise.map(searchTerm.split(' '), function (term) {
       return db.Snippets.findAll({ include: [{
         model: db.Tags,
