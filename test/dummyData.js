@@ -1,16 +1,36 @@
-module.exports = [{
-  snippet: 'snippets are awesome',
-  title: 'My Awesome Snippet',
-  tags: ['javascript', 'recursion', 'awesome'],
-  createdBy: 'Yilen'
-},{
-  snippet: 'snippets are awesomer',
-  title: 'My Awesomer Snippet',
-  tags: ['javascript', 'recursion', 'awesome'],
-  createdBy: 'Lauren'
-},{
-  snippet: 'snippets are awesomest',
-  title: 'My Awesomest Snippet',
-  tags: ['javascript', 'recursion', 'awesome'],
-  createdBy: 'Todd'
-}];
+module.exports = [ { id: 3,
+    text: 'snippets%20are%20awesome',
+    forkedCount: 0,
+    createdAt: 'Thu Nov 12 2015 16:15:18 GMT-0800 (PST)',
+    updatedAt: 'Thu Nov 12 2015 16:15:18 GMT-0800 (PST)',
+    userId: 17,
+    user:
+     { id: 17,
+       username: null,
+       imgUrl: null,
+       createdAt: 'Thu Nov 12 2015 16:15:18 GMT-0800 (PST)',
+       updatedAt: 'Thu Nov 12 2015 16:15:18 GMT-0800 (PST)' } },
+  { id: 2,
+    text: 'snippets%20are%20awesome',
+    forkedCount: 0,
+    createdAt: 'Thu Nov 12 2015 16:14:45 GMT-0800 (PST)',
+    updatedAt: 'Thu Nov 12 2015 16:14:45 GMT-0800 (PST)',
+    userId: 14,
+    user:
+     { id: 14,
+       username: null,
+       imgUrl: null,
+       createdAt: 'Thu Nov 12 2015 16:14:45 GMT-0800 (PST)',
+       updatedAt: 'Thu Nov 12 2015 16:14:45 GMT-0800 (PST)' } },
+  { id: 1,
+    text: 'snippets%20are%20awesome',
+    forkedCount: 0,
+    createdAt: 'Thu Nov 12 2015 16:10:38 GMT-0800 (PST)',
+    updatedAt: 'Thu Nov 12 2015 16:10:38 GMT-0800 (PST)',
+    userId: 11,
+    user:
+     { id: 11,
+       username: null,
+       imgUrl: null,
+       createdAt: 'Thu Nov 12 2015 16:10:38 GMT-0800 (PST)',
+       updatedAt: 'Thu Nov 12 2015 16:10:38 GMT-0800 (PST)' } } ];

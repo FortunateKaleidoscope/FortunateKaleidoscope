@@ -8,6 +8,7 @@ module.exports = {
       var resSnips = snips.map(function (snip) {
         return snip.toJSON();
       });
+      console.log(resSnips);
       res.json(resSnips);
     }).catch(function (err) {
       res.sendStatus(501, err);
