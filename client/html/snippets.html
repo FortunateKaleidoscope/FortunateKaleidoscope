@@ -9,10 +9,11 @@
           <div class="col s6">
             <div class="card blue-grey darken-1 small">
               <div class="card-content white-text">
-                <p>{{snippet.text}}</p>
+                <span class="card-title">{{snippet.title}}</span>
+                <p>{{snippet.snippet}}</p>
               </div>
               <div class="card-action">
-                <a ui-sref="#">{{snippet.user.username}}</a>
+                <a ng-click="fetchByUser($event)">{{snippet.createdBy}}</a>
               </div>
             </div>
           </div> <!-- materialize column -->
@@ -22,7 +23,6 @@
 </div> <!-- ng-controller -->
 
 <!-- we are not goint to use angular filter here, we are jsut going to use db search -->
-                <!-- <span class="card-title">Card Title</span> -->
 
 <!--         <button ng-click="searchByTerm(inputEntry)">Search</button> -->
 
