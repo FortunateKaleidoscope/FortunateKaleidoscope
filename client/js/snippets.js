@@ -8,14 +8,16 @@ angular.module('sniphub.snippets', [])
     SniphubServices.fetchTopTen()
       .then(function ( snippets ) {
         $scope.snippets = snippets.data;
+        $scope.inUserView = false;
       });
+
   };
-  $scope.fetchByUser = function ( $event ) {
-    var username = $event.target.innerHTML
+  $scope.fetchByUser = function ( user ) {
     //call factory function
-    SniphubServices.fetchByUser( username )
+    SniphubServices.fetchByUser( user )
       .then(function ( snippets ) {
         $scope.snippets = snippets.data;
+        $scope.inUserView = true;
       });
   };
   // EXTRA CREDIT
