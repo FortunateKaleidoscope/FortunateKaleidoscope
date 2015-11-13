@@ -57,7 +57,7 @@ module.exports = {
     //Search all snippets, limit 10, ordered by createdAt date
     return Snippet.findAll({
       limit: 10,
-      order: ['createdAt', 'DESC'],
+      order: 'createdAt DESC',
       include: [{
         model: User
       }]
@@ -85,7 +85,7 @@ module.exports = {
       });
     });
   },
-  
+
   searchSnippets: function (searchTerm) {
     return Promise.map(searchTerm.split(' '), function (term) {
       return db.Snippets.findAll({ include: [{
