@@ -20,14 +20,14 @@ angular.module('sniphub.services', [])
     return $http({
       method: 'POST',
       url: '/api/snippet',
-      data: { 
-              "username" : user,
-              "text" : text,
-              "tags" : [],
-              "title" : title,
-              "tabPrefix" : tabPrefix,
-              "scope" : scope 
-             }
+      data: {
+        "username" : user,
+        "text" : text,
+        "tabPrefix" : tabPrefix,
+        "title" : title,
+        "scope" : scope, 
+        "tags" : [],
+       }
     }).then(function successCallback ( response ) {
       console.log("after success")
       return response;
