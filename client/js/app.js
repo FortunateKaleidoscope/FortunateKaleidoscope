@@ -2,7 +2,7 @@
 
 angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.snippets','sniphub.addSnippet', 'sniphub.auth', 'sniphub.snippetsUser'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
-  // $urlRouterProvider.otherwise('snippets');
+  $urlRouterProvider.otherwise('snippets');
   $stateProvider
     .state('snippets', {
       url: '/snippets',
