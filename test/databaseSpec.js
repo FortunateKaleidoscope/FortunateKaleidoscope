@@ -38,7 +38,7 @@ describe("User Table", function () {
 describe("Snippets Table", function () {
   beforeEach(function ( done ) {
     var sequelize = new Sequelize('sniphub', 'root', 'test');
-    db.Snippets.destroy({ where: { text: "awesome text snippet"}
+    db.Snippet.destroy({ where: { text: "awesome text snippet"}
     });
     sequelize.sync({force: true})
     .then( function () {
@@ -47,8 +47,8 @@ describe("Snippets Table", function () {
 });
 
     it("Should allow snippets to be created", function (done) {
-      db.Snippets.create({text: "awesome text snippet", forkedCount: 1}).then(function () {
-        db.Snippets.findOne({ where: { text : "awesome text snippet" } }).then(function (snippet) {
+      db.Snippet.create({text: "awesome text snippet", forkedCount: 1}).then(function () {
+        db.Snippet.findOne({ where: { text : "awesome text snippet" } }).then(function (snippet) {
           expect(snippet.text).to.equal("awesome text snippet");
           expect(snippet.forkedCount).to.equal(1);
           done();
@@ -57,9 +57,9 @@ describe("Snippets Table", function () {
     });
 
     it("Should allow snippets to be deleted", function (done) {
-      db.Snippets.create({text: "awesome text snippets", forkedCount: 1})
-      .then( function () { db.Snippets.destroy({ where: { text: "awesome text snippets" } }) })
-      .then( function () { db.Snippets.findOne({ where: { text: "awesome text snippets" } }) })
+      db.Snippet.create({text: "awesome text snippets", forkedCount: 1})
+      .then( function () { db.Snippet.destroy({ where: { text: "awesome text snippets" } }) })
+      .then( function () { db.Snippet.findOne({ where: { text: "awesome text snippets" } }) })
       .then( function (snippet) {
           expect(snippet).to.equal(undefined);
           done();
@@ -70,7 +70,7 @@ describe("Snippets Table", function () {
   describe("Tags Table", function () {
     beforeEach(function ( done ) {
       var sequelize = new Sequelize('sniphub', 'root', 'test');
-      db.Tags.destroy({ where: { tagname: "javascript"}
+      db.Tag.destroy({ where: { tagname: "javascript"}
       });
       sequelize.sync({force: true})
       .then( function () {
@@ -79,8 +79,8 @@ describe("Snippets Table", function () {
   });
 
     it("Should allow tags to be created", function (done) {
-      db.Tags.create({tagname: "javascript" }).then(function () {
-        db.Tags.findOne({ where: { tagname : "javascript" } }).then(function (tag) {
+      db.Tag.create({tagname: "javascript" }).then(function () {
+        db.Tag.findOne({ where: { tagname : "javascript" } }).then(function (tag) {
           expect(tag.tagname).to.equal("javascript");
           done();
         });
@@ -88,9 +88,9 @@ describe("Snippets Table", function () {
     });
 
     it("Should allow tags to be deleted", function (done) {
-      db.Tags.create({tagname: "javascript", forkedCount: 1})
-      .then( function () { db.Tags.destroy({ where: { tagname: "javascript" } }) })
-      .then( function () { db.Tags.findOne({ where: { tagname: "javascript" } }) })
+      db.Tag.create({tagname: "javascript", forkedCount: 1})
+      .then( function () { db.Tag.destroy({ where: { tagname: "javascript" } }) })
+      .then( function () { db.Tag.findOne({ where: { tagname: "javascript" } }) })
       .then( function (tag) {
           expect(tag).to.equal(undefined);
           done();
@@ -98,34 +98,34 @@ describe("Snippets Table", function () {
     });
   });
 
-xdescribe("Integration of tables", function () {
+describe("Integration of tables", function () {
 
   beforeEach(function ( done ) {
     var sequelize = new Sequelize('sniphub', 'root', 'test');
-    db.Tags.destroy({ where: { tagname: "javascript"} });
-    db.User.destroy({ where : {username: "fred" } });
-    db.Snippets.destroy({ where: {text: "awesome text snippet"}});
     sequelize.sync({force: true}).then( function () {
-      db.User.create({username: "fred"} )
-    })
-    .then( function () {
       done();
     });
   });
 
   it("Should correctly link associations across tables", function (done) {
-
-      db.Snippets.create({text: "awesome text snippet", User: { username: "fred"}, Tags: [{ tagname: "javascript" }, {tagname: 'awesome'}]}, { include: [ db.User, db.Tags]})
-    .then( function () {
-        db.Snippets.find({ where: { username : "fred" }, include : [db.User, db.Tags] });
-      })
-      .then( function ( snippet ) {
-        console.log(snippet);
-        expect(snippet.username).to.equal("fred");
-        expect(snippet.text).to.equal("awesome text snippet");
+    var post = {
+      text: "test",
+      forkedCount: 0
+    };
+    var user = "fred"
+    // Searches for User based on request
+    db.User.findOrCreate({
+      where: { username: user }
+      // if found, adjusts snippet userId to match found user's id
+    }).then(function (result) {
+      post.userId = result[0].id;
+      db.Snippet.create(post).then(function(post){
+        expect(post.get('text')).to.equal("test");
+        expect(post.get('userId')).to.equal(post.userId);
+        expect(post.get('forkedCount')).to.equal(0);
         done();
+        });
       });
     });
   });
-
 });

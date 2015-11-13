@@ -28,17 +28,20 @@ var Snippet = sequelize.define('snippets', {
   text : Sequelize.STRING,
   forkedCount : Sequelize.INTEGER
 });
-
+//TODO: make tagname unique
 var Tag = sequelize.define('tags', {
   tagname: Sequelize.STRING
 });
+//TODO: make a complete check
 
-// Declare join table to be used in Many to Many relationship
-var SnippetTag = sequelize.define('snippet_tag', {
+sequelize
+  .sync()
+  .then(function (err) {
+    console.log('It worked!');
+  }, function (err) { 
+    console.log('An error occurred while creating the table:', err);
+  });
 
-});
-
-sequelize.sync();
 // Creates one to many relationship between User and Snippets table
 Snippet.belongsTo(User, {foreignKey: 'userId'});
 User.hasMany(Snippet, {foreignKey: 'userId'});
@@ -50,5 +53,4 @@ module.exports = {
   User: User,
   Snippet: Snippet,
   Tag: Tag,
-  SnippetTag: SnippetTag
 };
