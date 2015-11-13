@@ -15,7 +15,7 @@ module.exports = {
   },
   searchSnips: function (req, res) {
     // TODO: Search snips by tag
-    res.send(201);
+    res.json(dummyData);
   },
   writeSnippet: function (req, res) {
     helpers.writeSnippet(req, function(err, post) {
