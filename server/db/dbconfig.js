@@ -9,6 +9,7 @@
 // Declare dependencies
 var Sequelize = require('sequelize');
 if (process.env.NODE_ENV === 'production') {
+  console.log(process.env.CLEARDB_DATABASE_URL);
   var sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
 } else {
   var secret = require('../lib/secrets').sql;
