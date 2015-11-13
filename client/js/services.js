@@ -25,7 +25,7 @@ angular.module('sniphub.services', [])
         "text" : text,
         "tabPrefix" : tabPrefix,
         "title" : title,
-        "scope" : scope, 
+        "scope" : scope,
         "tags" : [],
        }
     }).then(function successCallback ( response ) {
@@ -34,7 +34,7 @@ angular.module('sniphub.services', [])
     });
   };
   var fetchByUser = function ( user ) {
-    // /api/user/:userId -> 
+    // /api/user/:userId ->
     return $http({
       method: 'GET',
       url: '/api/user/' + user,
@@ -68,49 +68,17 @@ angular.module('sniphub.services', [])
 .factory('Auth', function ($http, $location, $window) {
   //**fix this to work with YiLen's stuff**
 
-  // Don't touch this Auth service!!!
-  // it is responsible for authenticating our user
-  // by exchanging the user's username and password
-  // for a JWT from the server
-  // that JWT is then stored in localStorage as 'com.shortly'
-  // after you signin/signup open devtools, click resources,
-  // then localStorage and you'll see your token from the server
-  var signin = function (user) {
-    // return $http({
-    //   method: 'POST',
-    //   url: '/api/users/signin',
-    //   data: user
-    // })
-    // .then(function (resp) {
-    //   return resp.data.token;
-    // });
-  };
-
-  var signup = function (user) {
-    // return $http({
-    //   method: 'POST',
-    //   url: '/api/users/signup',
-    //   data: user
-    // })
-    // .then(function (resp) {
-    //   return resp.data.token;
-    // });
-  };
-
   var isAuth = function () {
-    // return !!$window.localStorage.getItem('com.sniphub');
+    var isAuth = document.cookie.split( ';' )
+                .map( function( x ) { return x.trim().split( '=' ); } )
+                .reduce(function( a, b ) { a[ b[ 0 ] ] = b[ 1 ]; return a; },
+                {} )[ "isAuth" ];
+    return isAuth;
   };
 
-  var signout = function () {
-    $window.localStorage.removeItem('com.sniphub');
-    // $location.path('/signin');
-  };
 
 
   return {
-    signin: signin,
-    signup: signup,
     isAuth: isAuth,
-    signout: signout
   };
 });

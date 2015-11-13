@@ -1,7 +1,7 @@
 // FIX ALL THIS
 angular.module('sniphub.snippets', [])
 
-.controller('SnippetsController', function ($scope, $location, SniphubServices) {
+.controller('SnippetsController', function (Auth, $scope, $location, SniphubServices) {
   $scope.snippets = [];
   $scope.fetchTopTen = function () {
     //call factory function
