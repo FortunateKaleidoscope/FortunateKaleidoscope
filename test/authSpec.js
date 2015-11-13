@@ -18,11 +18,6 @@ describe('Auth should work', function(){
     request(app)
       .post('/api/snippet')
       .send(sendData)
-      .expect(200)
-      .end(function(res){
-        console.log(res);
-        // expect(res.body).to.exist();
-        done();
-      });
+      .expect(200, done);
   });
 });
