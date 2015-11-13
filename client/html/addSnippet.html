@@ -1,19 +1,37 @@
 <div ng-controller='AddSnippetController' id='container'>
-  <form ng-submit='postSnippet(userField, inputEntry, titleField , tabField, scope)'name ="AddSnippetForm">
-    <!-- text -->
-    <textarea required class="text" rows="10" cols="50" name="text" ng-model='inputEntry' placeholder="Enter your Snippet"> </textarea>
-    <input required class="text" type="text" name="text" ng-model='userField' placeholder="Enter your Username"/>
-    <input required class="text" type="text" name="text" ng-model='titleField' placeholder="Enter a Title for your Snippet"/>
-    <input required class="text" type="text" name="text" ng-model='tabField' placeholder="Enter a Tab Prefix for your Snippet"/>
-    <input required class="text" type="text" name="text" ng-model='scope' placeholder="Enter your scope"/>
-    <!-- user can add multiple tags and they show up under text box-->
-    <input type='submit' value="Add Snippet" ></input>
-  </form>
+  <div class="row">
+    <form class="col s12" ng-submit='postSnippet(userField, inputEntry, titleField , tabField, scope)'name ="AddSnippetForm">
+      <div class="row">
+        <div class="input-field col s12">
+          <input required id="last_name" type="text" class="validate text" type="text" name="text" ng-model='titleField'>
+          <label for="last_name">Title</label>
+        </div>
+        <div class="input-field col s6">
+          <input required id="last_name" type="text" class="validate text" type="text" name="text" ng-model='tabField'>
+          <label for="last_name">Tab Prefix</label>
+        </div>
+        <div class="input-field col s6">
+          <input required id="last_name" type="text" class="validate text" type="text" name="text" ng-model='scope'>
+          <label for="last_name">Scope</label>
+        </div>
+        <div class="input-field col s12">
+
+          <textarea required id="textarea1" class="materialize-textarea text" name="text" ng-model='inputEntry'>
+          </textarea>
+
+          <label for="textarea1">Snippet</label>
+        </div>
+        <button class="btn waves-effect waves-light orange grey-text text-darken-4" type="submit" name="action">Add Snippet
+        <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 
-<!--
 
-can use for error messages later:
+
+<!-- can use for error messages later:
 
   <div ng-show="shortenForm.url.$error.required">Please enter a thing</div>
   <div ng-show="shortenForm.url.$error.url">Not a valid thing</div>
