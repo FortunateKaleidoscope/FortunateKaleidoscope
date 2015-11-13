@@ -1,7 +1,4 @@
-<!-- kinda done -->
-
-<div ng-controller="SnippetsController" id='container' >
-
+<div ng-controller="SnippetsUserController" id='container' >
     <div class="container">
       <div class="row">
         <div ng-repeat="snippet in snippets" class="snippet">
@@ -13,7 +10,7 @@
                 <p>{{snippet.text}}</p>
               </div>
               <div class="card-action">
-                <a ui-sref="users({ id: snippet.user.username })")>{{snippet.user.username}}</a>
+                <a>{{snippet.user.username}}</a>
               </div>
             </div>
           </div> <!-- materialize column -->
@@ -21,7 +18,3 @@
       </div> <!-- materilaize row -->
     </div> <!-- materialize container -->
 </div> <!-- ng-controller -->
-
-<!-- we are not goint to use angular filter here, we are jsut going to use db search -->
-
-<!--         <button ng-click="searchByTerm(inputEntry)">Search</button> -->
