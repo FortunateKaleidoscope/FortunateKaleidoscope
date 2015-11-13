@@ -27,7 +27,10 @@ var User = sequelize.define('users', {
 
 var Snippet = sequelize.define('snippets', {
   text : Sequelize.STRING,
-  forkedCount : Sequelize.INTEGER
+  forkedCount : Sequelize.INTEGER,
+  tabPrefix : Sequelize.STRING,
+  title : Sequelize.STRING,
+  scope : Sequelize.STRING
 });
 
 var Tag = sequelize.define('tags', {
