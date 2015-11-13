@@ -38,9 +38,9 @@ module.exports = {
     }).then(function (result) {
       post.userId = result[0].id;
       Snippet.create(post).then(function(post){
-        cb(post);
+        cb(null, post);
       });
-    });
+    }).catch(cb);
   },
 
   getSnippets: function(){

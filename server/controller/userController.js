@@ -12,5 +12,6 @@ module.exports = {
     // write all of them to file
     // zip it up
     // res.download
+    res.sendStatus(200)
   }
 };

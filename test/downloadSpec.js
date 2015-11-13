@@ -11,7 +11,7 @@ describe('Should download files', function(){
   });
   it('should have route for users snippets', function(done){
     request(app)
-      .get('/download/user/1')
+      .get('/api/user/lauren/download')
       .expect(200, done);
   });
   it('should send a zip file', function(done){
