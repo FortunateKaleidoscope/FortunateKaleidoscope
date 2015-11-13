@@ -30,14 +30,16 @@ module.exports = {
       text: snippet,
       forkedCount: 0
     };
-
+    // Retrieves user name from request
     var user = req.user.username;
 
+    // Searches for User based on request
     User.findOrCreate({
       where: { username: user }
+      // if found, adjusts snippet userId to match found user's id
     }).then(function (result) {
       post.userId = result[0].id;
-      Snippet.create(post).then(function(post){
+      Snippet.create(post).then(function (post) {
         cb(null, post);
       });
     }).catch(cb);
