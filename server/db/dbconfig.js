@@ -21,7 +21,6 @@ var User = sequelize.define('users', {
     type: Sequelize.STRING,
     unique: true
   },
-  title: Sequelize.STRING,
   imgUrl: Sequelize.STRING
 });
 
