@@ -13,7 +13,6 @@ angular.module('sniphub.snippets', [])
   $scope.fetchByUser = function ( $event ) {
     var username = $event.target.innerHTML
     //call factory function
-    console.log($event.target.innerHTML);
     SniphubServices.fetchByUser( username )
       .then(function ( snippets ) {
         $scope.snippets = snippets.data;
