@@ -12,7 +12,7 @@ describe('Auth should work', function(){
   });
   it('should accept post requests', function(done){
     request(app)
-      .post('/api/snippets')
+      .post('/api/snippet')
       .send(dummyData[0])
       .expect(201)
       .end(function(res){
