@@ -6,13 +6,13 @@ TASK: 1 **HIGH PRIORITY**
   - look in userController.js to send out users Snips
 
 TASK: 2 **HIGH PRIORITY**
-- Set up auth for users
-  - /auth/github
-    - Please decide on what this route should do
-      - On success, do we redirect or do we send a confirm token?
-    - All of the logic lives in the authController.js file
-  - Reflect auth on the view
-  - Need to reflect session on view
+x Set up auth for users
+  x /auth/github
+    x Please decide on what this route should do
+      x On success, do we redirect or do we send a confirm token?
+    x All of the logic lives in the authController.js file
+  x Reflect auth on the view
+  x Need to reflect session on view
 
 TASK: 4 **HIGH PRIORITY**
 - deploy to heroku
