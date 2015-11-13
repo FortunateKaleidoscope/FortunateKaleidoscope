@@ -11,4 +11,5 @@ module.exports = function (app) {
     passport.authenticate('github', { failureRedirect: '/' }),
     authController.githubAuthCallback
   );
+  app.get('/logout', authController.logout);
 }
