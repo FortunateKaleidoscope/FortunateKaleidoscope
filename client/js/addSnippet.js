@@ -7,8 +7,8 @@ angular.module('sniphub.addSnippet', [])
     //here just let the user know they submitted the thing
   }
   //call another method in services
-  $scope.addSnippet = function (  user, text, tags  ) {
-    SniphubServices.addSnippet( user, text ).then(function ( response ) {
+  $scope.addSnippet = function (  user, text, title, tabPrefix, scope  ) {
+    SniphubServices.addSnippet( user, text, title, tabPrefix, scope ).then(function ( response ) {
       $scope.submitted();
     });
   };

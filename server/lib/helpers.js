@@ -25,6 +25,7 @@ module.exports = {
     var tags = req.body.tags.map(function (tag) {
       return { tagname: tag };
     });
+    var languageScope = req.body.scope;
     var snipTitle = escape(req.body.title);
     var tab = escape(req.body.tabPrefix);
     // Building snippet object to create
@@ -32,7 +33,8 @@ module.exports = {
       text: snippet,
       forkedCount: 0,
       tabPrefix: tab,
-      title: snipTitle
+      title: snipTitle,
+      scope: languageScope
     };
     // Retrieves user name from request
     var user = req.username;
