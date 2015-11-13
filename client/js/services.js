@@ -15,17 +15,18 @@ angular.module('sniphub.services', [])
       console.log('Error in getting snippets from db');
     });
   };
-  var addSnippet = function ( user, text, tags ) {
+  var addSnippet = function ( user, text ) {
     //tags should be an array
     return $http({
       method: 'POST',
       url: '/api/snippet',
       data: { 
-              "user" : user,
+              "username" : user,
               "text" : text,
-              "tags" : tags
+              "tags" : []
              }
     }).then(function successCallback ( response ) {
+      console.log("after success")
       return response;
     });
   };
