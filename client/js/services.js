@@ -15,7 +15,7 @@ angular.module('sniphub.services', [])
       console.log('Error in getting snippets from db');
     });
   };
-  var addSnippet = function ( user, text ) {
+  var addSnippet = function ( user, text, title, tabPrefix ) {
     //tags should be an array
     return $http({
       method: 'POST',
@@ -23,7 +23,9 @@ angular.module('sniphub.services', [])
       data: { 
               "username" : user,
               "text" : text,
-              "tags" : []
+              "tags" : [],
+              "title" : title,
+              "tabPrefix" : tabPrefix
              }
     }).then(function successCallback ( response ) {
       console.log("after success")

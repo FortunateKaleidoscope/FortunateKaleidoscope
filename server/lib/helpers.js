@@ -25,13 +25,17 @@ module.exports = {
     var tags = req.body.tags.map(function (tag) {
       return { tagname: tag };
     });
+    var snipTitle = escape(req.body.title);
+    var tab = escape(req.body.tabPrefix);
     // Building snippet object to create
     var post = {
       text: snippet,
-      forkedCount: 0
+      forkedCount: 0,
+      tabPrefix: tab,
+      title: snipTitle
     };
     // Retrieves user name from request
-    var user = req.user.username;
+    var user = req.username;
 
     // Searches for User based on request
     User.findOrCreate({
