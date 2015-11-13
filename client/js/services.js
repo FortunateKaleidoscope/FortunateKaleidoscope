@@ -36,6 +36,7 @@ angular.module('sniphub.services', [])
       url: '/api/user/' + user,
     }).then(function successCallback ( response ) {
       //store all links in scope.data
+      console.log("response in services getByUser", response);
       return response;
     }, function errorCallback ( response ) {
       console.log('Error in getting snippets from db');

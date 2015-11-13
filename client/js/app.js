@@ -19,23 +19,31 @@ angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.sni
         'top' : { templateUrl: 'html/navbar.html'},
         'main' : { templateUrl: 'html/addSnippet.html' }
       }
-    })
-    .state('signup', {
-      url: '/signup',
-      controller: 'AuthController',
-      views: {
-        'main' : { templateUrl: 'html/signup.html' }
-      }
-    })
-    .state('signin', {
-      url: '/signin',
-      controller: 'AuthController',
-      views: {
-        'main' : { templateUrl: 'html/signin.html' }
-      }
     });
+    // .state('signup', {
+    //   url: '/signup',
+    //   controller: 'AuthController',
+    //   views: {
+    //     'main' : { templateUrl: 'html/signup.html' }
+    //   }
+    // })
+    // .state('signin', {
+    //   url: '/signin',
+    //   controller: 'AuthController',
+    //   views: {
+    //     'main' : { templateUrl: 'html/signin.html' }
+    //   }
+    // })
+    // .state('users', {
+    //   url: '/users',
+    //   controller: 'SnippetsController',
+    //   views: {
+    //     'top' : { templateUrl: 'html/navbar.html'},
+    //     'main' : { templateUrl: 'html/snippets.html' }
+    //   }
+    // });
 
-    $httpProvider.interceptors.push('AttachTokens');
+    // $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
