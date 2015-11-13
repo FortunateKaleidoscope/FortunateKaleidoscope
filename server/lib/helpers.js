@@ -20,7 +20,7 @@ module.exports = {
   },
 
   writeSnippet: function (req, cb) {
-    var snippet = escape(req.body.snippet);
+    var snippet = escape(req.body.text);
     // takes the array of body tags and turns them into objects
     var tags = req.body.tags.map(function (tag) {
       return { tagname: tag };
@@ -31,7 +31,7 @@ module.exports = {
       forkedCount: 0
     };
 
-    var user = req.user.username;
+    var user = req.body.username;
 
     User.findOrCreate({
       where: { username: user }
