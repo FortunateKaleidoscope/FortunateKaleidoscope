@@ -3,15 +3,13 @@
 module.exports = function (snipObj) {
   var snippet = unescape(snipObj.text);
   var tabPrefix = unescape(snipObj.tabPrefix);
-  var scope = snipObj.scope !== undefined ?  " <!-- <scope>scope." + snipObj.scope + "</scope> -->" : '';
-  return "<snippet>" +
-    "<content><![CDATA["+
+  var scope = snipObj.scope !== undefined ?  "<scope>scope." + snipObj.scope + "</scope>" : '';
+  return "<snippet>\n" +
+    "<content><![CDATA[\n"+
     snippet +
-    "]]></content>"
-    "  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->"+
-    "  <!-- <tabTrigger>" + tabPrefix + "</tabTrigger> -->"+
-    "  <!-- Optional: Set a scope to limit where the snippet will trigger -->"+
+    "\n]]></content>\n" +
+    "<tabTrigger>" + tabPrefix + "</tabTrigger>\n"+
     scope +
-    "</snippet>";
+    "\n</snippet>";
 
 };
