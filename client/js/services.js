@@ -69,36 +69,17 @@ angular.module('sniphub.services', [])
 .factory('Auth', function ($http, $location, $window) {
   //**fix this to work with YiLen's stuff**
 
-
-  // var signin = function (user) {
-  //
-  // };
-  //
-  // var signup = function (user) {
-  //   // return $http({
-  //   //   method: 'POST',
-  //   //   url: '/api/users/signup',
-  //   //   data: user
-  //   // })
-  //   // .then(function (resp) {
-  //   //   return resp.data.token;
-  //   // });
-  // };
-
   var isAuth = function () {
-    // return !!$window.localStorage.getItem('com.sniphub');
+    var isAuth = document.cookie.split( ';' )
+                .map( function( x ) { return x.trim().split( '=' ); } )
+                .reduce(function( a, b ) { a[ b[ 0 ] ] = b[ 1 ]; return a; },
+                {} )[ "isAuth" ];
+    return isAuth;
   };
 
-  var signout = function () {
-    $window.localStorage.removeItem('com.sniphub');
-    // $location.path('/signin');
-  };
 
 
   return {
-    // signin: signin,
-    // signup: signup,
     isAuth: isAuth,
-    signout: signout
   };
 });
