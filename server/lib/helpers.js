@@ -31,16 +31,16 @@ module.exports = {
       forkedCount: 0
     };
 
-    var user = req.user;
+    var user = req.user.username;
 
     User.findOrCreate({
       where: { username: user }
     }).then(function (result) {
       post.userId = result[0].id;
       Snippet.create(post).then(function(post){
-        cb(post);
+        cb(null, post);
       });
-    });
+    }).catch(cb);
   },
 
   getSnippets: function () {

@@ -1,5 +1,5 @@
 'use strict';
-// /user route
+// /api/user route
 var userController = require('../../controller/userController');
 
 module.exports = function (app) {

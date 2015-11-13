@@ -1,43 +1,22 @@
 var request = require('supertest');
 var expect = require('chai').expect;
 var app = require('../server/app');
-var cobbler = require('cobbler');
-var WalkingDead = require('walking-dead')
-
+var dummyData = require('./dummyData');
 
 describe('Auth should work', function(){
-  var url = 'http://localhost:3001';
-  var zopts = {debug: false, silent: false};
-  var passport, server;
-  var profile = {
-    provider: 'github',
-    id: 12345,
-    displayName: 'John Doe',
-    emails: [{value: 'john@doe.com'}]
-  };
-
-  beforeEach(function() {
-    delete require.cache[require.resolve('../server/app')];
-    app = require('../server/app');
+  xit('should block users that are not logged in', function(done){
+    request(app)
+      .post('/api/snippets')
+      .send(dummyData[0])
+      .expect(302, done);
   });
-
-  afterEach(function(done) {
-    passport.restore();
-    server.close(done);
+  it('should accept post requests', function(done){
+    request(app)
+      .post('/api/snippet')
+      .send(dummyData[0])
+      .expect(200)
+      .end(function(res){
+        expect(res.body).to.exist();
+      });
   });
-
-  it("can be passed the Github Strategy", function(done) {
-     var strategy = require('passport-github2').Strategy;
-     passport = cobbler(strategy, profile);
-     server = app.listen(3001, function() {
-       new WalkingDead(url).zombify(zopts)
-         .when(function (browser, next) {
-           browser.visit(url + '/auth/github', next);
-         })
-         .then(function(res, next) {
-            expect(res).to.exist
-         })
-         .end(done);
-     });
-   });
 });
