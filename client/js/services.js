@@ -73,7 +73,7 @@ angular.module('sniphub.services', [])
                 .map( function( x ) { return x.trim().split( '=' ); } )
                 .reduce(function( a, b ) { a[ b[ 0 ] ] = b[ 1 ]; return a; },
                 {} )[ "isAuth" ];
-    return isAuth;
+    return isAuth === 'true' ? true : false;
   };
 
 
