@@ -14,7 +14,7 @@ describe('Auth should work', function(){
     request(app)
       .post('/api/snippet')
       .send(dummyData[0])
-      .expect(201)
+      .expect(200)
       .end(function(res){
         expect(res.body).to.exist();
       });
