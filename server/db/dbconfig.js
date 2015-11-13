@@ -28,14 +28,13 @@ var Snippet = sequelize.define('snippets', {
   text : Sequelize.STRING,
   forkedCount : Sequelize.INTEGER
 });
-//TODO: make tagname unique
+
 var Tag = sequelize.define('tags', {
   tagname: {
     type: Sequelize.STRING,
     unique: true
   }
 });
-//TODO: make a complete check
 
 sequelize
   .sync()
