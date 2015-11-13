@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "test": "grunt test",
-    "postinstall": "bower cache clean && bower install",
+    "postinstall": "./node_modules/bower/bin/bower install",
     "start": "node server/index.js"
   },
   "repository": {
