@@ -8,8 +8,8 @@ angular.module('sniphub.addSnippet', [])
   }
   //call another method in services
   $scope.addSnippet = function (  user, text, tags  ) {
-    SniphubServices.addSnippet( user, text, tags ).then(function ( response ) {
-      $scope.submitted()
+    SniphubServices.addSnippet( user, text ).then(function ( response ) {
+      $scope.submitted();
     });
   };
 });
