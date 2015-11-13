@@ -25,6 +25,10 @@ dist/
 # Secrets
 server/lib/secrets.js
 
+# TMP and Zip
+server/tmp/
+server/zip/
+
 # Dependency directorys
 # Deployed apps should consider commenting these lines out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git

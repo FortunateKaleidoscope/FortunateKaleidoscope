@@ -1,32 +1,16 @@
 'use strict';
-var fs = require('fs');
 var writeFile = require('./promises').writeFile;
 var sublimeSnippetTemplate = require('./sublimeSnippetGenerator');
+var mkpathAsync = require('./promises').mkpathAsync;
 var path = require('path');
 var del = require('del');
-var archiver = require('archiver');
 
-var writeSnippetFile = function (snipObj) {
-  return writeFile(path.join(__dirname + "/../tmp/" + escape(snipObj.title) + ".sublime-snippet"),
-    sublimeSnippetTemplate(snipObj),
-    'utf8');
-};
+var writeSnippetFile = function (snipObj, outFolder) {
 
-var zipFolder = function (srcPath, outPath, callback) {
-  var output = fs.createWriteStream(outPath + 'out.zip');
-  var zipArchiver = archiver('zip');
-  output.on('close', function () {
-    callback(outPath);
-  });
-  zipArchiver.pipe(output);
-  zipArchiver.bulk([
-    { src: [ '**/*' ], cwd: srcPath, expand: true }
-  ]);
-  zipArchiver.finalize(function(err, bytes) {
-    if(err) {
-      throw err;
-    }
-    console.log('done:', base, bytes);
+  return mkpathAsync(outFolder).then(function(){
+    return writeFile(outFolder + escape(snipObj.title) + ".sublime-snippet",
+      sublimeSnippetTemplate(snipObj),
+      'utf8');
   });
 };
 
@@ -36,6 +20,6 @@ var cleanFolder = function (folderPath) {
 
 module.exports = {
   writeSnippetFile: writeSnippetFile,
-  zipFolder: zipFolder,
+  zipFolder: require('./promises').zipFolder,
   cleanFolder: cleanFolder
 };

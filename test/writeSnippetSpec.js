@@ -27,9 +27,10 @@ describe('Creating Snippets', function(done){
   snipObj2.scope = "javascript"
 
   var snips = [snipObj, snipObj1, snipObj2];
+  var d = Date.now();
+  var writePathSnip = path.join(__dirname + '/../server/tmp/' + d + '/');
+  var writePathZip = path.join(__dirname + '/../server/zip/');
 
-  var writePathSnip = path.join(__dirname + '/../server/tmp/');
-  var writePathZip = path.join(__dirname + '/../server/zip/')
 
   beforeEach(function (done) {
     del([writePathSnip + '*.sublime-snippet', writePathZip+'*.zip']).then(function(){
@@ -38,25 +39,24 @@ describe('Creating Snippets', function(done){
   });
 
   it('should take a snippet object and write a Snippets', function(done){
-    writeSnippetFile(snipObj).then(function(){
+    writeSnippetFile(snipObj, writePathSnip).then(function(){
       done();
     });
   });
 
   it('should zip up a file', function (done) {
-    writeSnippetFile(snipObj).then(function(){
-      zipFolder(writePathSnip, writePathZip, function(){
+    writeSnippetFile(snipObj, writePathSnip).then(function(){
+      zipFolder(writePathSnip).then(function(){
         done();
-      });
+      })
     });
   });
 
   it('should zip up a folder', function(done){
     Promise.map(snips, function (snip) {
-      console.log(snip);
-      return writeSnippetFile(snip);
+      return writeSnippetFile(snip, writePathSnip);
     }).then(function () {
-      zipFolder(writePathSnip, writePathZip, function(){
+      zipFolder(writePathSnip).then(function(){
         done();
       });
     });
