@@ -74,8 +74,8 @@ module.exports = {
     });
   },
 
-  getSnippetsByUser: function (user) {
-    return User.find({
+  getSnippetsByUser: function (user, cb) {
+    User.find({
       where: {
         username: user
       }
@@ -89,7 +89,8 @@ module.exports = {
           model: User
         }]
       }).then(function (result) {
-        return result;
+        //We are good here;
+        cb(null, result);
       });
     });
   },
