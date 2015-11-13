@@ -31,7 +31,7 @@ module.exports = {
       forkedCount: 0
     };
 
-    var user = req.user;
+    var user = req.user.username;
 
     User.findOrCreate({
       where: { username: user }
