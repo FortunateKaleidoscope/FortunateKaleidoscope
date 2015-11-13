@@ -1,10 +1,13 @@
 <div ng-controller='AddSnippetController' id='container'>
-  <form name ="AddSnippetForm">
+  <form ng-submit='postSnippet(userField, inputEntry, titleField , tabField, scope)'name ="AddSnippetForm">
     <!-- text -->
-    <input required class="text" type="text" name="text" ng-model='inputEntry' />
+    <textarea required class="text" rows="10" cols="50" name="text" ng-model='inputEntry' placeholder="Enter your Snippet"> </textarea>
+    <input required class="text" type="text" name="text" ng-model='userField' placeholder="Enter your Username"/>
+    <input required class="text" type="text" name="text" ng-model='titleField' placeholder="Enter a Title for your Snippet"/>
+    <input required class="text" type="text" name="text" ng-model='tabField' placeholder="Enter a Tab Prefix for your Snippet"/>
+    <input required class="text" type="text" name="text" ng-model='scope' placeholder="Enter your scope"/>
     <!-- user can add multiple tags and they show up under text box-->
-    <input required class="text" type="text" ng-model='inputEntry' />
-    <input type='submit' value="Add Snippet" ng-click='addLink(inputEntry)' ></input>
+    <input type='submit' value="Add Snippet" ></input>
   </form>
 </div>
 
