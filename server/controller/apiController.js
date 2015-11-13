@@ -18,12 +18,8 @@ module.exports = {
     res.json(dummyData);
   },
   writeSnippet: function (req, res) {
-    helpers.writeSnippet(req, function(err, post) {
-      if (err) {
-        res.sendStatus(501);
-      } else {
-        res.json(post);
-      }
+    helpers.writeSnippet(req, function(post) {
+        res.json({created: true});
     });
   }
 };
