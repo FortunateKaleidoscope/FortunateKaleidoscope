@@ -2,8 +2,13 @@
 var passport = require('passport');
 var session = require('express-session');
 var GitHubStrategy = require('passport-github2').Strategy;
-var GITHUB_CLIENT_ID = require('../lib/secrets').GITHUB_CLIENT_ID;
-var GITHUB_CLIENT_SECRET = require('../lib/secrets').GITHUB_CLIENT_SECRET;
+if (process.env.NODE_ENV === 'production') {
+  var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+  var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+} else {
+  var GITHUB_CLIENT_ID = require('../lib/secrets').GITHUB_CLIENT_ID;
+  var GITHUB_CLIENT_SECRET = require('../lib/secrets').GITHUB_CLIENT_SECRET;
+}
 var getUser = require('../lib/helpers').getUser;
 
 

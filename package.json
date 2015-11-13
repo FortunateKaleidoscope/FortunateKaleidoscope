@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "test": "grunt test",
+    "postinstall": "bower install",
     "start": "node server/index.js"
   },
   "repository": {
