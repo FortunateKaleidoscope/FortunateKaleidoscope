@@ -5,7 +5,11 @@ var passport = require('./passport');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
-var SESSION_SECRET = require('../lib/secrets').SESSION_SECRET;
+if (process.env.NODE_ENV === 'production') {
+  var SESSION_SECRET = process.env.SESSION_SECRET;
+} else {
+  var SESSION_SECRET = require('../lib/secrets').SESSION_SECRET;
+}
 
 module.exports = function (app, express) {
   var authRoute = express.Router();
@@ -31,7 +35,12 @@ module.exports = function (app, express) {
   app.use(passport.session());
 
   // Establish static route
-  app.use(express.static(__dirname + '/../../client'));
+  if (process.env.NODE_ENV === 'production') {
+    process.env.PWD = process.cwd()
+    app.use(express.static(process.env.PWD + '/../../client'));
+  } else {
+    app.use(express.static(__dirname + '/../../client'));
+  }
 
   app.use('/', publicRoute);
   require('./routes/publicRoute')(publicRoute);

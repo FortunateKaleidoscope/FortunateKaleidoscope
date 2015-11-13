@@ -1,19 +1,20 @@
-<!-- kinda done -->
-
 <div ng-controller="SnippetsController" id='container' >
-
     <div class="container">
       <div class="row">
         <div ng-repeat="snippet in snippets" class="snippet">
           <!-- edit this stuff -->
           <div class="col s6">
-            <div class="card blue-grey darken-1 small">
+            <div class="card grey darken-4 small">
               <div class="card-content white-text">
-                <span class="card-title">{{snippet.title}}</span>
-                <p ng-bind-html="snippet.text"></p>
+                <span class="card-title orange-text">{{snippet.title}}</span>
+                <p class="deep-purple-text text-lighten-1">{{snippet.text}}</p>
               </div>
-              <div class="card-action">
-                <a ui-sref="users({ id: snippet.user.username })">{{snippet.user.username}}</a>
+              <div class="card-action grey darken-3">
+                <a ui-sref="users({ id: snippet.user.username })">
+                  <span class="pink-text text-accent-4">
+                  {{snippet.user.username}}
+                </span>
+                </a>
               </div>
             </div>
           </div> <!-- materialize column -->

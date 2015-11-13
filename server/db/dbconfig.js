@@ -8,12 +8,18 @@
 
 // Declare dependencies
 var Sequelize = require('sequelize');
-var secret = require('../lib/secrets').sql;
+if (process.env.NODE_ENV === 'production') {
+  var username = process.env.MY_SQL_UNAME;
+  var secret = process.env.MY_SQL_PASSWORD;
+  var sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
+} else {
+  var secret = require('../lib/secrets').sql;
+  var sequelize = new Sequelize('sniphub', 'root', secret);
+}
 var mysql = require('mysql');
 
 // Connection to MySql database using database named sniphub
 
-var sequelize = new Sequelize('sniphub', 'root', secret);
 
 
 var User = sequelize.define('users', {
@@ -43,7 +49,7 @@ sequelize
   .sync()
   .then(function (err) {
     console.log('It worked!');
-  }, function (err) { 
+  }, function (err) {
     console.log('An error occurred while creating the table:', err);
   });
 
