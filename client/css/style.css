@@ -1,7 +1,47 @@
+body {
+  background-color: #49483e;
+}
+nav {
+  background-color: #383830;
+}
 nav .brand-logo {
   /*margin-left: 20px;*/
+  color: #66d9ef;
+}
+.sub {
+  color: #a6e22e;
 }
 nav form {
   /*margin-left: 180px;*/
   width: 300px;
 }
+.card {
+  background-color: #272822;
+}
+
+/*
+body light gray
+#49483e
+
+navbar - medium gray  X
+#383830
+
+card - darkgray background X
+#272822
+
+number purple
+#ae81ff
+
+return pink
+#f92672
+
+param orange
+#fd971f
+
+snip - function blue
+#66d9ef
+
+hub - var green
+#a6e22e
+*/
+
