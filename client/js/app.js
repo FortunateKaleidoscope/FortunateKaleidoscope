@@ -21,7 +21,9 @@ angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.sni
     .state('users', {
       url: '/users/:id',
       controller: "snippetsUserController",
-      templateUrl: 'html/snippetUser.html'
+      views: {
+        'main' : { templateUrl: 'html/snippetUser.html'}
+      }
     });
 
 });

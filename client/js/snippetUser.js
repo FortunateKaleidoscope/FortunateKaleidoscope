@@ -11,9 +11,8 @@ $scope.fetchByUser = function ( user ) {
         $scope.inUserView = true;
       });
   };
-  console.log("I AM HERE")
   $scope.$watch('$viewContentLoaded', function () {
-    $scope.fetchByUser($scope.params);
+    $scope.fetchByUser($scope.params.id);
   });
 
 })

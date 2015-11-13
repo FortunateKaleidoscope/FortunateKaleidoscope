@@ -12,9 +12,6 @@ angular.module('sniphub.snippets', [])
       });
 
   };
-  $scope.goToUser = function ( user ) {
-    $state.go("users", {id : user}); 
-  };
 
   $scope.fetchByUser = function ( user ) {
     //call factory function
