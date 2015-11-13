@@ -36,8 +36,8 @@ module.exports = function (app, express) {
 
   // Establish static route
   if (process.env.NODE_ENV === 'production') {
-    process.env.PWD = process.cwd()
-    app.use(express.static(process.env.PWD + '/../../client'));
+    console.log(process.cwd());
+    app.use(express.static(process.cwd() + '/../../client'));
   } else {
     app.use(express.static(__dirname + '/../../client'));
   }
