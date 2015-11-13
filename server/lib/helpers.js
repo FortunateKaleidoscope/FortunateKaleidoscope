@@ -25,19 +25,27 @@ module.exports = {
     var tags = req.body.tags.map(function (tag) {
       return { tagname: tag };
     });
+    var languageScope = req.body.scope;
+    var snipTitle = escape(req.body.title);
+    var tab = escape(req.body.tabPrefix);
     // Building snippet object to create
     var post = {
       text: snippet,
-      forkedCount: 0
+      forkedCount: 0,
+      tabPrefix: tab,
+      title: snipTitle,
+      scope: languageScope
     };
+    // Retrieves user name from request
+    var user = req.username;
 
-    var user = req.body.username;
-
+    // Searches for User based on request
     User.findOrCreate({
       where: { username: user }
+      // if found, adjusts snippet userId to match found user's id
     }).then(function (result) {
       post.userId = result[0].id;
-      Snippet.create(post).then(function(post){
+      Snippet.create(post).then(function (post) {
         cb(null, post);
       });
     }).catch(cb);
