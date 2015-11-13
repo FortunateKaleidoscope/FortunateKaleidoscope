@@ -35,10 +35,10 @@ describe('Routes', function(done){
         }
         // var data = JSON.parse(res);
         expect(res.body).to.be.an('array');
-        expect(res.body[0]).to.have.property('snippet');
-        expect(res.body[0]).to.have.property('title');
-        expect(res.body[0]).to.have.property('tags');
-        expect(res.body[0]).to.have.property('createdBy');
+        expect(res.body[0]).to.have.property('text');
+        expect(res.body[0]).to.have.property('id');
+        expect(res.body[0]).to.have.property('userId');
+        expect(res.body[0]).to.have.property('createdAt');
         done();
       });
   });
