@@ -1,6 +1,6 @@
 <!-- kinda done -->
 
-<div ng-controller="SnippetsController as Snippets" id='container' >
+<div ng-controller="SnippetsController" id='container' >
 
     <div class="container">
       <div class="row">
@@ -12,7 +12,7 @@
                 <p>{{snippet.text}}</p>
               </div>
               <div class="card-action">
-                <a ui-sref="#">{{snippet.user}}</a>
+                <a ui-sref="#">{{snippet.user.username}}</a>
               </div>
             </div>
           </div> <!-- materialize column -->
