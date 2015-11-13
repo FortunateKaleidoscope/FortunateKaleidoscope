@@ -1,7 +1,7 @@
 <div ng-controller='AddSnippetController' id='container'>
   <form ng-submit='postSnippet(userField, inputEntry, titleField , tabField, scope)'name ="AddSnippetForm">
     <!-- text -->
-    <input required class="text" type="text" name="text" ng-model='inputEntry' placeholder="Enter your Snippet" />
+    <textarea required class="text" rows="10" cols="50" name="text" ng-model='inputEntry' placeholder="Enter your Snippet"> </textarea>
     <input required class="text" type="text" name="text" ng-model='userField' placeholder="Enter your Username"/>
     <input required class="text" type="text" name="text" ng-model='titleField' placeholder="Enter a Title for your Snippet"/>
     <input required class="text" type="text" name="text" ng-model='tabField' placeholder="Enter a Tab Prefix for your Snippet"/>
