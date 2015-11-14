@@ -8,7 +8,10 @@ $scope.fetchByUser = function ( user ) {
     SniphubServices.fetchByUser( user )
       .then(function ( snippets ) {
         $scope.snippets = snippets.data;
-        $scope.inUserView = true;
+        $scope.snippets.forEach(function (item) {
+          item.text = unescape(item.text);
+          item.title = unescape(item.title);
+        });
       });
   };
   $scope.$watch('$viewContentLoaded', function () {

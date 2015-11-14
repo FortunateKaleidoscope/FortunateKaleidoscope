@@ -64,7 +64,6 @@ angular.module('sniphub.services', [])
     searchByTerm : searchByTerm
   };
 })
-
 .factory('Auth', function ($http, $location, $window) {
   //**fix this to work with YiLen's stuff**
 
