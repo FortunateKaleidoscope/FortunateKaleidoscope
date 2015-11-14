@@ -4,8 +4,7 @@ var path = require('path');
 var archiver = require('archiver');
 var mkpath = require('mkpath')
 if (process.env.NODE_ENV === 'production') {
-  process.env.PWD = process.cwd()
-  var writePathZip = path.join(process.env.PWD + '/../zip/')
+  var writePathZip = path.join(process.cwd() + '/server/zip/')
 } else {
   var writePathZip = path.join(__dirname + '/../zip/')
 }
