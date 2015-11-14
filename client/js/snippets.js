@@ -1,7 +1,7 @@
 // FIX ALL THIS
-angular.module('sniphub.snippets', ['ngSanitize'])
+angular.module('sniphub.snippets', ['hljs'])
 
-.controller('SnippetsController', function (Auth, $scope, $state, $stateParams, $location, SniphubServices, $sce) {
+.controller('SnippetsController', function (Auth, $scope, $location, SniphubServices) {
   $scope.snippets = [];
   $scope.fetchTopTen = function () {
     //call factory function
