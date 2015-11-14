@@ -11,15 +11,16 @@ describe('Should download files', function(){
   });
   it('should have route for users snippets', function(done){
     request(app)
-      .get('/api/user/lauren/download')
+      .get('/api/user/yilenpan/download')
       .expect(200, done);
   });
   xit('should send a zip file', function(done){
     request(app)
-      .get('/download/177')
+      .get('/download/1')
       .expect(200)
       .end(function(err, res) {
         expect(res.header['Content-type']).to.not.be('text/html');
+        done();
       });
   });
 });

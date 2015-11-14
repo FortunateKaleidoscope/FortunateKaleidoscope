@@ -46,7 +46,7 @@ describe('Creating Snippets', function(done){
 
   it('should zip up a file', function (done) {
     writeSnippetFile(snipObj, writePathSnip).then(function(){
-      zipFolder(writePathSnip).then(function(){
+      zipFolder(writePathSnip, writePathZip).then(function(){
         done();
       })
     });
@@ -56,7 +56,7 @@ describe('Creating Snippets', function(done){
     Promise.map(snips, function (snip) {
       return writeSnippetFile(snip, writePathSnip);
     }).then(function () {
-      zipFolder(writePathSnip).then(function(){
+      zipFolder(writePathSnip, writePathZip).then(function(){
         done();
       });
     });

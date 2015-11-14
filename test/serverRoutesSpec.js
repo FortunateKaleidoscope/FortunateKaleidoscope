@@ -13,11 +13,7 @@ describe('Routes', function(done){
   });
   it('should show users page', function(done){
     request(app)
-      .get('/api/user/lauren')
-      .expect(200);
-
-    request(app)
-      .get('/api/user/yilen')
+      .get('/api/user/yilenpan')
       .expect(200, done);
   });
   it('should redirect user to github on login', function (done) {
