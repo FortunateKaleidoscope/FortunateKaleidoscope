@@ -37,7 +37,7 @@ module.exports = {
       scope: languageScope
     };
     // Retrieves user name from request
-    var user = req.body.username;
+    var user = req.user.username;
 
     // Searches for User based on request
     User.findOrCreate({

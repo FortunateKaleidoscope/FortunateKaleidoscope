@@ -1,9 +1,9 @@
 # TODO's
 
 TASK: 1 **HIGH PRIORITY**
-- Set up users snippets page
-  - hook up users page to db (getSnipsByUser)
-  - look in userController.js to send out users Snips
+x Set up users snippets page
+  x hook up users page to db (getSnipsByUser)
+  x look in userController.js to send out users Snips
 
 TASK: 2 **HIGH PRIORITY**
 x Set up auth for users
@@ -15,7 +15,7 @@ x Set up auth for users
   x Need to reflect session on view
 
 TASK: 4 **HIGH PRIORITY**
-- deploy to heroku
+x deploy to heroku
 
 TASK: 3 **MEDIUM PRIORITY**
 - Get downloads hooked up to the downloads page
