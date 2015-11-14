@@ -11,7 +11,7 @@ module.exports = {
     var snippetID = req.params.snippetId;
     helpers.getSnippet(snippetID)
            .then(function (result) {
-             res.send(result);
+            //  utils.writeSnippetFile(result, )
            })
            .catch(function (err) {
              res.redirect('/');
