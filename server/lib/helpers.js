@@ -37,7 +37,7 @@ module.exports = {
       scope: languageScope
     };
     // Retrieves user name from request
-    var user = req.body.username;
+    var user = req.user.username;
 
     // Searches for User based on request
     User.findOrCreate({
@@ -51,12 +51,16 @@ module.exports = {
     }).catch(cb);
   },
 
-  getSnippets: function () {
-    return db.Snippets.findAll({
+  getSnippet: function(snippetID) {
+    return Snippet.findAll({
+      where: {
+        id: snippetID
+      },
       include: [{
         model: User
       }]
     }).then(function (result) {
+
       return result;
     });
   },
