@@ -23,7 +23,7 @@ module.exports = {
     var username = req.params.username;
     console.log(username);
     var folder = rootFolder + '/server/tmp/' + Date.now() + '/';
-    var zipFolder = rootFolder + '/server/zip/';
+    var zipFolder = rootFolder + '/server/zip/' + Date.now() + '/';
       // getSnippetsByUser ->
     helpers.getSnippetsByUser(username, function (err, results) {
        // convert each to json
@@ -44,7 +44,7 @@ module.exports = {
           res.download(zipFile, Date.now() + '.zip', function (err) {
             // on complete, delete the folder.
             utils.cleanFolder(folder);
-            utils.cleanFolder(rootFolder + '/server/zip/')
+            utils.cleanFolder(zipFolder);
           });
         })
       }).catch(function (err) {
