@@ -5,9 +5,11 @@ var GitHubStrategy = require('passport-github2').Strategy;
 if (process.env.NODE_ENV === 'production') {
   var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
   var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+  var CALLBACK_URL = 'https://safe-depths-6699.herokuapp.com/auth/github/callback'
 } else {
   var GITHUB_CLIENT_ID = require('../lib/secrets').GITHUB_CLIENT_ID;
   var GITHUB_CLIENT_SECRET = require('../lib/secrets').GITHUB_CLIENT_SECRET;
+  var CALLBACK_URL = "http://localhost:3000/auth/github/callback";
 }
 var getUser = require('../lib/helpers').getUser;
 
@@ -23,7 +25,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GitHubStrategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/github/callback"
+    callbackURL: CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
