@@ -16,7 +16,7 @@ module.exports = function (app, express) {
   var publicRoute = express.Router();
   var apiRoute = express.Router();
   // Logger
-  // app.use(morgan('dev'));
+  app.use(morgan('dev'));
   // Parses posts requests
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
