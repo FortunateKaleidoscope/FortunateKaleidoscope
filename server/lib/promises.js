@@ -3,15 +3,15 @@ var fs = require('fs');
 var path = require('path');
 var archiver = require('archiver');
 var mkpath = require('mkpath')
-if (process.env.NODE_ENV === 'production') {
-  var writePathZip = path.join(process.cwd() + '/server/zip/')
-} else {
-  var writePathZip = path.join(__dirname + '/../zip/')
-}
+// if (process.env.NODE_ENV === 'production') {
+//   var writePathZip = path.join(process.cwd() + '/server/zip/')
+// } else {
+//   var writePathZip = path.join(__dirname + '/../zip/')
+// }
 // Zip Folder
   // Takes a srcPath which is where all of the user's snippets live
   // passes out the filePath for zip when done.
-var zipFolder = function (srcPath) {
+var zipFolder = function (srcPath, writePathZip) {
 
   return new Promise(function (resolve, reject) {
 

@@ -12,8 +12,11 @@
               <div class="card-action grey darken-3">
                 <a ui-sref="users({ id: snippet.user.username })">
                   <span class="pink-text text-accent-4">
-                  {{snippet.user.username}}
-                </span>
+                    {{snippet.user.username}}
+                  </span>
+                </a>
+                <a href="/download/{{snippet.id}}" class="right btn-floating btn-small waves-effect waves-light red">
+                  <i class="material-icons">add</i>
                 </a>
               </div>
             </div>
