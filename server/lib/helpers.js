@@ -51,8 +51,22 @@ module.exports = {
     }).catch(cb);
   },
 
-  getSnippets: function () {
-    return db.Snippets.findAll({
+  // Note: Do we need this function?
+  // getSnippets: function () {
+  //   return db.Snippets.findAll({
+  //     include: [{
+  //       model: User
+  //     }]
+  //   }).then(function (result) {
+  //     return result;
+  //   });
+  // },
+
+  getSnippet: function(snippetID) {
+    return Snippet.findAll({
+      where: {
+        id: snippetID
+      },
       include: [{
         model: User
       }]
