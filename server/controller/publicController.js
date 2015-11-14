@@ -9,9 +9,12 @@ var helpers = require('../lib/helpers');
 module.exports = {
   downloadSnippet: function (req, res) {
     var snippetID = req.params.snippetId;
+    var folder = Date.now() + '/';
     helpers.getSnippet(snippetID)
            .then(function (result) {
-            //  utils.writeSnippetFile(result, )
+             utils.writeSnippetFile(result, folder).then(function(file){
+               res.download(file.filePath, file.fileName);
+             })
            })
            .catch(function (err) {
              res.redirect('/');
