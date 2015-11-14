@@ -1,26 +1,21 @@
 // FIX ALL THIS
-angular.module('sniphub.snippets', [])
+angular.module('sniphub.snippets', ['hljs'])
 
-.controller('SnippetsController', function (Auth, $scope, $state, $stateParams, $location, SniphubServices) {
+.controller('SnippetsController', function (Auth, $scope, $location, SniphubServices) {
   $scope.snippets = [];
   $scope.fetchTopTen = function () {
     //call factory function
     SniphubServices.fetchTopTen()
       .then(function ( snippets ) {
         $scope.snippets = snippets.data;
-        $scope.inUserView = false;
+        $scope.snippets.forEach(function (item) {
+          item.text = unescape(item.text);
+          item.title = unescape(item.title);
+        });
       });
 
   };
 
-  $scope.fetchByUser = function ( user ) {
-    //call factory function
-    SniphubServices.fetchByUser( user )
-      .then(function ( snippets ) {
-        $scope.snippets = snippets.data;
-        $scope.inUserView = true;
-      });
-  };
   // EXTRA CREDIT
   // $scope.searchByTerm = function ( term ) {
   //   //call factory function

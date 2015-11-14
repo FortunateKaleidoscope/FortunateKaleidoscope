@@ -6,8 +6,8 @@
             <div class="card grey darken-4 small">
               <div class="card-content white-text">
                 <span class="card-title orange-text">{{snippet.title}}</span>
-                <p class="deep-purple-text text-lighten-1">{{snippet.text}}</p>
               </div>
+              <div hljs hljs-language="javascript" hljs-source="snippet.text" ></div>
               <div class="card-action grey darken-3">
                 <a ui-sref="users({ id: snippet.user.username })">
                   <span class="pink-text text-accent-4">
