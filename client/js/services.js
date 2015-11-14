@@ -64,18 +64,6 @@ angular.module('sniphub.services', [])
     searchByTerm : searchByTerm
   };
 })
-.factory('Utility', function () {
-  var escapeQuotes = function (string) {
-    return string.replace(/"/g, '\\"');
-  };
-  var unescapeQuotes = function (string) {
-    return string.replace(/\\"/g, '"');
-  };
-  return {
-    escapeQuotes: escapeQuotes,
-    unescapeQuotes: unescapeQuotes
-  };
-})
 .factory('Auth', function ($http, $location, $window) {
   //**fix this to work with YiLen's stuff**
 

@@ -1,7 +1,7 @@
 // FIX ALL THIS
 angular.module('sniphub.snippets', ['ngSanitize'])
 
-.controller('SnippetsController', function (Auth, $scope, $state, $stateParams, $location, SniphubServices, Utility, $sce) {
+.controller('SnippetsController', function (Auth, $scope, $state, $stateParams, $location, SniphubServices, $sce) {
   $scope.snippets = [];
   $scope.fetchTopTen = function () {
     //call factory function
@@ -9,27 +9,13 @@ angular.module('sniphub.snippets', ['ngSanitize'])
       .then(function ( snippets ) {
         $scope.snippets = snippets.data;
         $scope.snippets.forEach(function (item) {
-          // $scope.unescape(item.text);
-          console.log(item.text)
+          item.text = unescape(item.text);
+          item.title = unescape(item.title);
         });
       });
 
   };
 
-  $scope.fetchByUser = function ( user ) {
-    //call factory function
-    SniphubServices.fetchByUser( user )
-      .then(function ( snippets ) {
-        $scope.snippets = snippets.data;
-        // $scope.snippets.forEach(function (item) {
-        //   $scope.unescape(item.text);
-        // });
-      });
-  };
-
-  $scope.unescape = function ( string ) {
-    return Utility.unescapeQuotes( string );
-  };
   // EXTRA CREDIT
   // $scope.searchByTerm = function ( term ) {
   //   //call factory function
