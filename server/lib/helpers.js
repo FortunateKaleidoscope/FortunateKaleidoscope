@@ -95,6 +95,8 @@ module.exports = {
       }).then(function (result) {
         //We are good here;
         cb(null, result);
+      }).catch(function (err) {
+        cb(err);
       });
     });
   },
