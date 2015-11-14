@@ -14,16 +14,25 @@ if (process.env.NODE_ENV === 'production') {
 var zipFolder = function (srcPath) {
 
   return new Promise(function (resolve, reject) {
+
+    // Create zipFile name
     var outPath = writePathZip + Date.now() + '.zip';
+
+    // Create write stream
     var output = fs.createWriteStream(outPath);
+
+    // Archive type
     var zipArchiver = archiver('zip');
 
+    // pass outPath down the chain on close.
     output.on('close', function () {
       resolve(outPath);
     });
 
+    // Create pipe
     zipArchiver.pipe(output);
 
+    // Takes all files in folder and zips.
     zipArchiver.bulk([
       { src: [ '**/*' ], cwd: srcPath, expand: true }
     ]);
