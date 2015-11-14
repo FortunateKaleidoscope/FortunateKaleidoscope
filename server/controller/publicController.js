@@ -1,6 +1,7 @@
 'use strict';
 var utils = require('../lib/utils');
 var helpers = require('../lib/helpers');
+var rootFolder = require('../../rootPath');
 
 // /download/:snippetID
 
@@ -9,10 +10,10 @@ var helpers = require('../lib/helpers');
 module.exports = {
   downloadSnippet: function (req, res) {
     var snippetID = req.params.snippetId;
-    var folder = Date.now() + '/';
+    var folder = rootFolder + '/server/tmp/' + Date.now() + '/';
     helpers.getSnippet(snippetID)
            .then(function (result) {
-             utils.writeSnippetFile(result, folder).then(function(file){
+             utils.writeSnippetFile(result[0].toJSON(), folder).then(function(file){
                res.download(file.filePath, file.fileName);
              })
            })

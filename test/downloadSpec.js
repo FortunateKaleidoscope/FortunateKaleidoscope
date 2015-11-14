@@ -16,7 +16,7 @@ describe('Should download files', function(){
   });
   xit('should send a zip file', function(done){
     request(app)
-      .get('/download/1')
+      .get('/download/177')
       .expect(200)
       .end(function(err, res) {
         expect(res.header['Content-type']).to.not.be('text/html');

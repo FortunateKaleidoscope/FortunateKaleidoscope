@@ -71,6 +71,7 @@ module.exports = {
         model: User
       }]
     }).then(function (result) {
+      
       return result;
     });
   },
