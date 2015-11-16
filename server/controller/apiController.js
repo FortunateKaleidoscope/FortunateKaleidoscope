@@ -18,8 +18,8 @@ module.exports = {
     res.json(dummyData);
   },
   writeSnippet: function (req, res) {
-    helpers.writeSnippet(req, function(post) {
+    helpers.writeSnippet(req, function () {
         res.json({created: true});
-    });
+      });
   }
 };
