@@ -2,6 +2,8 @@
 var passport = require('passport');
 var session = require('express-session');
 var GitHubStrategy = require('passport-github2').Strategy;
+
+// Setting API keys
 if (process.env.NODE_ENV === 'production') {
   var GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
   var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
@@ -11,6 +13,8 @@ if (process.env.NODE_ENV === 'production') {
   var GITHUB_CLIENT_SECRET = require('../lib/secrets').GITHUB_CLIENT_SECRET;
   var CALLBACK_URL = "http://localhost:3000/auth/github/callback";
 }
+
+// Does a findOrCreate on user and returns a promise
 var getUser = require('../lib/helpers').getUser;
 
 
@@ -28,8 +32,9 @@ passport.use(new GitHubStrategy({
     callbackURL: CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
+    // Passport's code
     process.nextTick(function () {
+      // We get user then pass it to done
       getUser(profile).then(function(user) {
         done(null, user);
       }).catch(function(err) {
