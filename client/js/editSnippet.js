@@ -6,20 +6,18 @@ angular.module('sniphub.editSnippet', [])
 
   $scope.fetchSnippetById = function ( user, id ) {
   //fetch the snippet by provided snippet id;
-  SniphubServices.fetchBySnippetId( user, id ).then(function ( snippet ) {
-    $scope.snippet = snippet.data
-    $scope.inputEntry = unescape($scope.snippet.text);
-    $scope.titleField = $scope.snippet.title;
-    $scope.tabField = $scope.snippet.tabPrefix;
-    $scope.scope = $scope.snippet.scope;
-    $scope.userField = Auth.isAuth("username");
-    $scope.snippetId = $scope.snippet.id
-  });
-
-  }
+    SniphubServices.fetchBySnippetId( user, id ).then(function ( snippet ) {
+      $scope.snippet = snippet.data
+      $scope.inputEntry = unescape($scope.snippet.text);
+      $scope.titleField = $scope.snippet.title;
+      $scope.tabField = $scope.snippet.tabPrefix;
+      $scope.scope = $scope.snippet.scope;
+      $scope.userField = Auth.isAuth("username");
+      $scope.snippetId = $scope.snippet.id;
+    });
+  };
 
   $scope.updateSnippet = function ( snippetId, user, text, title, tabPrefix, scope  ) {
-    console.log("Upadating, ", snippetId, user, text, title, tabPrefix, scope)
     SniphubServices.updateSnippet( snippetId, user, text, title, tabPrefix, scope ).then(function ( response ) {
       $state.go('snippets');
     });
@@ -28,5 +26,4 @@ angular.module('sniphub.editSnippet', [])
   $scope.$watch('$viewContentLoaded', function () {
     $scope.fetchSnippetById($scope.params.id, $scope.params.snippetId);
   });
-
 });

@@ -29,6 +29,13 @@ angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.sni
       views: {
         'main' : { templateUrl: 'html/snippetUser.html'}
       }
+    })
+    .state('editSnippet', {
+      url: 'users/:id/:snippetId',
+      controller: 'EditSnippetController',
+      views: {
+        'main' : { templateUrl: 'html/editSnippet.html' }
+      }
     });
 
 });
