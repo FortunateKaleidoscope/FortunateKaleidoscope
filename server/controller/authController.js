@@ -2,7 +2,7 @@
 module.exports = {
   githubAuth: function (req, res) { },
   githubAuthCallback: function (req, res) {
-    // res.cookie('username', req.user.username);
+    res.cookie('username', req.user.username);
     res.cookie('isAuth', true);
     res.redirect('/');
   },
