@@ -30,7 +30,7 @@ var User = sequelize.define('users', {
 });
 
 var Snippet = sequelize.define('snippets', {
-  text : Sequelize.STRING,
+  text : Sequelize.STRING(2000),
   forkedCount : Sequelize.INTEGER,
   tabPrefix : Sequelize.STRING,
   title : Sequelize.STRING,
