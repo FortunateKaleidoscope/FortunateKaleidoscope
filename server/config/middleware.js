@@ -43,15 +43,15 @@ module.exports = function (app, express) {
   }
 
   app.use('/', publicRoute);
-  require('./routes/publicRoute')(publicRoute);
+  require('../routes/publicRoute')(publicRoute);
 
   app.use('/auth', authRoute);
-  require('./routes/authRoute')(authRoute);
+  require('../routes/authRoute')(authRoute);
 
   // app.use('/user', userRoute);
   // require('./routes/userRoute')(userRoute);
 
   app.use('/api', apiRoute);
-  require('./routes/apiRoute')(apiRoute);
+  require('../routes/apiRoute')(apiRoute);
 
 };

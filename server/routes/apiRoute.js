@@ -1,8 +1,8 @@
 'use strict';
 // /api route
 var express = require('express');
-var apiController = require('../../controller/apiController');
-var authMiddleware = require('../authMiddleware');
+var apiController = require('../controller/apiController');
+var authMiddleware = require('../config/authMiddleware');
 var userRoute = express.Router();
 
 module.exports = function (app) {
