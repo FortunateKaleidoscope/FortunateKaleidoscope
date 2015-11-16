@@ -37,6 +37,11 @@ describe('Creating Snippets', function(done){
       done();
     });
   });
+  afterEach(function (done) {
+    del([writePathSnip + '*.sublime-snippet', writePathZip+'*.zip']).then(function(){
+      done();
+    });
+  });
 
   it('should take a snippet object and write a Snippets', function(done){
     writeSnippetFile(snipObj, writePathSnip).then(function(){
