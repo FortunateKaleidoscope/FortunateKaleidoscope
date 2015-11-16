@@ -1,12 +1,12 @@
-# Project Name
+# SnipHub
 
-> Pithy project description
+> A Github-like platofrm for creating and sharing your most-loved snippets.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Lauren Mendoza
+  - __Scrum Master__: Yilen Pan
+  - __Development Team Members__: Todd Levin, Yilen Pan, Lauren Mendoza
 
 ## Table of Contents
 
@@ -24,11 +24,11 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Angular
+- Node
+- Express
+- SQL
+- Sequelize
 
 ## Development
 
@@ -37,9 +37,9 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
 npm install
 bower install
+grunt run
 ```
 
 ### Roadmap

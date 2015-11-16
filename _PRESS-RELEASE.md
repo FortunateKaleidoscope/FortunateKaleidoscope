@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > SnipHub - Github for Snippets!
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Use more snippets and be a faster coder.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > SnipHub is a sharing platform for finding and sharing Sublime snippets.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > As developers, we wanted one place to store all our favorite snippets, and share them with our teammates.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Our product is a well-designed, sleek app that allows anyone with a github account to fork, share, and download ready-made snippets.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "I had the idea for SnipHub when I realized I had way more cool snippets than my teammates. I felt bad for them." - Todd
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Just visit sniphub.herokuapp.com and use Github to login and start snipping.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "I check Sniphub every day. and I'm the CEO of Netflix" - The CEO of Netflix.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Obviously our project is awesome, but with a few more features, it would be even awesomer!
