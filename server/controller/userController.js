@@ -22,8 +22,8 @@ module.exports = {
   },
   updateSnippet: function (req, res) {
     req.body.id = req.params.snippetID;
-    helpers.updateSnippet(req.body).then( function (result) {
-      res.json(result.toJSON());
+    helpers.updateSnippet(req).then( function (result) {
+      res.json(result);
     }).catch(function (err) {
       console.log(err);
       res.redirect('/');

@@ -2,6 +2,8 @@
 var expect = require('chai').expect;
 var writeSnippetFile = require('../server/lib/utils').writeSnippetFile;
 var zipFolder = require('../server/lib/utils').zipFolder;
+var cleanFolder = require('../server/lib/utils').cleanFolder;
+
 var Promise = require('bluebird');
 var fs = require('fs');
 var path = require('path');
@@ -31,14 +33,10 @@ describe('Creating Snippets', function(done){
   var writePathSnip = path.join(__dirname + '/../server/tmp/' + d + '/');
   var writePathZip = path.join(__dirname + '/../server/zip/');
 
-
-  beforeEach(function (done) {
-    del([writePathSnip + '*.sublime-snippet', writePathZip+'*.zip']).then(function(){
-      done();
-    });
-  });
   afterEach(function (done) {
-    del([writePathSnip + '*.sublime-snippet', writePathZip+'*.zip']).then(function(){
+    cleanFolder(writePathSnip).then(function () {
+      return del([writePathZip+'*.zip']);
+    }).then(function () {
       done();
     });
   });
