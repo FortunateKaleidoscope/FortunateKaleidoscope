@@ -2,10 +2,8 @@
 module.exports = {
   githubAuth: function (req, res) { },
   githubAuthCallback: function (req, res) {
-    res.cookie({
-      'username': req.user.username,
-      'isAuth': true
-    });
+    // res.cookie('username', req.user.username);
+    res.cookie('isAuth', true);
     res.redirect('/');
   },
   logout: function (req, res) {
