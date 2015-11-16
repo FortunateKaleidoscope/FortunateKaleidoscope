@@ -67,14 +67,14 @@ angular.module('sniphub.services', [])
   };
 })
 .factory('Auth', function ($http, $location, $window) {
-  //**fix this to work with YiLen's stuff**
 
-  var isAuth = function () {
+  //Parse the cookie based on parameter and return the result
+  var isAuth = function ( parameter ) {
     var isAuth = document.cookie.split( ';' )
                 .map( function( x ) { return x.trim().split( '=' ); } )
                 .reduce(function( a, b ) { a[ b[ 0 ] ] = b[ 1 ]; return a; },
-                {} )[ "isAuth" ];
-    return isAuth === 'true' ? true : false;
+                {} )[ parameter ];
+    return isAuth;
   };
 
 
