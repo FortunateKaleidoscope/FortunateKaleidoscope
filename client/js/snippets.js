@@ -17,19 +17,17 @@ angular.module('sniphub.snippets', ['hljs'])
   };
 
   $scope.forkSnippet = function ( user, text, title, tabPrefix, scope, forkedFrom ) {
-    SniphubServices.addSnippet( user, text, title, tabPrefix, scope, forkedFrom ).then(function ( response ) {
-      $scope.fetchTopTen();
-    });
+    //calls the auth cookie parser to get the currently logged in username.
+    user = Auth.isAuth( 'username' );
+    // Only forks if the user is not the same as the forked from.
+    if ( user !== forkedFrom ) {
+      //call the factory function with new user and forkedFrom data
+      SniphubServices.addSnippet( user, text, title, tabPrefix, scope, forkedFrom ).then(function ( response ) {
+        $scope.fetchTopTen();
+      });
+    }
   };
 
-  // EXTRA CREDIT
-  // $scope.searchByTerm = function ( term ) {
-  //   //call factory function
-  //   SniphubServices.searchByTerm( term )
-  //     .then(function ( snippets ) {
-  //       $scope.snippets = snippets;
-  //     });
-  // };
   //call once upon app load
   $scope.$watch('$viewContentLoaded', function () {
     $scope.fetchTopTen();
