@@ -10,20 +10,15 @@ exports.authMiddleware = function (req, res, next) {
 exports.confirmUserSnippet = function (req, res, next) {
   var snippetID = req.params.snippetID;
   var username = req.params.username;
-  if (req.params.username !== req.user.username) {
-    console.log('usernames don\'t match');
-    res.redirect('/');
-  } else {
-    getSnippet(parseInt(snippetID)).then(function (snip) {
-      var snipJSON = snip.toJSON();
-      if (username === snip.user.username) {
-        req.snippetJSON = snipJSON;
-        next();
-      } else {
-        res.redirect('/');
-      }
-    }).catch(function (err) {
+  getSnippet(parseInt(snippetID)).then(function (snip) {
+    var snipJSON = snip.toJSON();
+    if (username === snip.user.username) {
+      req.snippetJSON = snipJSON;
+      next();
+    } else {
       res.redirect('/');
-    });
-  }
+    }
+  }).catch(function (err) {
+    res.redirect('/');
+  });
 };
