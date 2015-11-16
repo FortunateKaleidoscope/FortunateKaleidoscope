@@ -20,8 +20,13 @@
             <div id="jump_page">
               
                 
-                <a class="source" href="hello.html">
-                  hello.js
+                <a class="source" href="app.html">
+                  app.js
+                </a>
+              
+                
+                <a class="source" href="authMiddleware.html">
+                  authMiddleware.js
                 </a>
               
                 
@@ -35,6 +40,26 @@
                 </a>
               
                 
+                <a class="source" href="apiController.html">
+                  apiController.js
+                </a>
+              
+                
+                <a class="source" href="authController.html">
+                  authController.js
+                </a>
+              
+                
+                <a class="source" href="publicController.html">
+                  publicController.js
+                </a>
+              
+                
+                <a class="source" href="userController.html">
+                  userController.js
+                </a>
+              
+                
                 <a class="source" href="dbconfig.html">
                   dbconfig.js
                 </a>
@@ -45,8 +70,48 @@
                 </a>
               
                 
+                <a class="source" href="helpers.html">
+                  helpers.js
+                </a>
+              
+                
+                <a class="source" href="promises.html">
+                  promises.js
+                </a>
+              
+                
                 <a class="source" href="secrets.html">
                   secrets.js
+                </a>
+              
+                
+                <a class="source" href="sublimeSnippetGenerator.html">
+                  sublimeSnippetGenerator.js
+                </a>
+              
+                
+                <a class="source" href="utils.html">
+                  utils.js
+                </a>
+              
+                
+                <a class="source" href="apiRoute.html">
+                  apiRoute.js
+                </a>
+              
+                
+                <a class="source" href="authRoute.html">
+                  authRoute.js
+                </a>
+              
+                
+                <a class="source" href="publicRoute.html">
+                  publicRoute.js
+                </a>
+              
+                
+                <a class="source" href="userRoute.html">
+                  userRoute.js
                 </a>
               
             </div>
@@ -73,25 +138,148 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> morgan = <span class="hljs-built_in">require</span>(<span class="hljs-string">'morgan'</span>);
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
+<span class="hljs-keyword">var</span> morgan = <span class="hljs-built_in">require</span>(<span class="hljs-string">'morgan'</span>);
 <span class="hljs-keyword">var</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);
 <span class="hljs-keyword">var</span> passport = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./passport'</span>);
 <span class="hljs-keyword">var</span> session = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-session'</span>);
+<span class="hljs-keyword">var</span> cookieParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cookie-parser'</span>);
 
-<span class="hljs-keyword">var</span> SESSION_SECRET = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/secrets'</span>).SESSION_SECRET;
+<span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">'production'</span>) {
+  <span class="hljs-keyword">var</span> SESSION_SECRET = process.env.SESSION_SECRET;
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-keyword">var</span> SESSION_SECRET = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/secrets'</span>).SESSION_SECRET;
+}
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">app, express</span>) </span>{
   <span class="hljs-keyword">var</span> authRoute = express.Router();
-  
-  app.use(morgan(<span class="hljs-string">'dev'</span>));
-  app.use(bodyParser.urlencoded({extended: <span class="hljs-literal">true</span>}));
-  app.use(bodyParser.json());
-  app.use(session({
-    secret: SESSION_SECRET
-  }));
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(express.static(__dirname + <span class="hljs-string">'/../../client'</span>));
+  <span class="hljs-keyword">var</span> publicRoute = express.Router();
+  <span class="hljs-keyword">var</span> apiRoute = express.Router();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Logger</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  app.use(morgan(<span class="hljs-string">'dev'</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Parses posts requests</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  app.use(bodyParser.urlencoded({extended: <span class="hljs-literal">true</span>}));
+  app.use(bodyParser.json());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Uses sessions</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  app.use(session({
+    secret: SESSION_SECRET,
+    resave: <span class="hljs-literal">true</span>,
+    saveUninitialized: <span class="hljs-literal">false</span>
+  }));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Uses cookies for client side to use</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  app.use(cookieParser());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Inits passport sessions</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  app.use(passport.initialize());
+  app.use(passport.session());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Establish static route</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">'production'</span>) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"current working dir "</span> +process.cwd());
+    app.use(express.static(process.cwd() + <span class="hljs-string">'/client'</span>));
+  } <span class="hljs-keyword">else</span> {
+    app.use(express.static(__dirname + <span class="hljs-string">'/../../client'</span>));
+  }
+
+  app.use(<span class="hljs-string">'/'</span>, publicRoute);
+  <span class="hljs-built_in">require</span>(<span class="hljs-string">'../routes/publicRoute'</span>)(publicRoute);
+
+  app.use(<span class="hljs-string">'/auth'</span>, authRoute);
+  <span class="hljs-built_in">require</span>(<span class="hljs-string">'../routes/authRoute'</span>)(authRoute);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>app.use(‘/user’, userRoute);
+require(‘./routes/userRoute’)(userRoute);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+  app.use(<span class="hljs-string">'/api'</span>, apiRoute);
+  <span class="hljs-built_in">require</span>(<span class="hljs-string">'../routes/apiRoute'</span>)(apiRoute);
 
 };</pre></div></div>
             

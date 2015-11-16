@@ -25,7 +25,7 @@ module.exports = function (app, express) {
   app.use(session({
     secret: SESSION_SECRET,
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: true
   }));
 
   // Uses cookies for client side to use
@@ -37,7 +37,6 @@ module.exports = function (app, express) {
 
   // Establish static route
   if (process.env.NODE_ENV === 'production') {
-    console.log("current working dir " +process.cwd());
     app.use(express.static(process.cwd() + '/client'));
   } else {
     app.use(express.static(__dirname + '/../../client'));

@@ -16,7 +16,18 @@ module.exports = {
         res.json(result);
       }
     });
-
+  },
+  getUserSnippet: function (req, res) {
+    res.json(req.snippetJSON);
+  },
+  updateSnippet: function (req, res) {
+    req.body.id = req.params.snippetID;
+    helpers.updateSnippet(req).then( function (result) {
+      res.json(result);
+    }).catch(function (err) {
+      console.log(err);
+      res.redirect('/');
+    });
   },
   downloadSnippets: function (req, res) {
     // Get username

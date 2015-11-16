@@ -34,11 +34,12 @@ module.exports = {
   },
 
   writeSnippet: function (req, cb) {
-    var snippet = escape(req.body.text);
     // takes the array of body tags and turns them into objects
     var tags = req.body.tags.map(function (tag) {
       return { tagname: tag };
     });
+    // Parses snippet
+    var snippet = escape(req.body.text);
     var languageScope = req.body.scope;
     var snipTitle = escape(req.body.title);
     var tab = escape(req.body.tabPrefix);
@@ -68,7 +69,7 @@ module.exports = {
   },
 
   getSnippet: function(snippetID) {
-    return Snippet.findAll({
+    return Snippet.findOne({
       where: {
         id: snippetID
       },
@@ -76,11 +77,32 @@ module.exports = {
         model: User
       }]
     }).then(function (result) {
-
       return result;
     });
   },
 
+  updateSnippet: function (req) {
+    // Parse and sanitize req
+    var snippet = escape(req.body.text);
+    var languageScope = req.body.scope;
+    var snipTitle = escape(req.body.title);
+    var tab = escape(req.body.tabPrefix);
+    // Building snippet object to create
+    var post = {
+      text: snippet,
+      tabPrefix: tab,
+      title: snipTitle,
+      scope: languageScope,
+    };
+    // Update Snippet
+    return Snippet.update(post, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (result) {
+      return result;
+    });
+  },
   getSnippetsMostRecent: function () {
     //Search all snippets, limit 10, ordered by createdAt date
     return Snippet.findAll({
