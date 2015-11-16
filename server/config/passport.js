@@ -9,21 +9,30 @@ if (process.env.NODE_ENV === 'production') {
   var GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
   var CALLBACK_URL = 'https://safe-depths-6699.herokuapp.com/auth/github/callback'
 } else {
+  // Using Dev Credentials
   var GITHUB_CLIENT_ID = require('../lib/secrets').GITHUB_CLIENT_ID;
   var GITHUB_CLIENT_SECRET = require('../lib/secrets').GITHUB_CLIENT_SECRET;
   var CALLBACK_URL = "http://localhost:3000/auth/github/callback";
 }
 
 // Does a findOrCreate on user and returns a promise
-var getUser = require('../lib/helpers').getUser;
+var findOrCreateUser = require('../lib/helpers').findOrCreateUser;
+var findUserByUsername = require('../lib/helpers').findUserByUsername;
 
-
+// Serializes user information to be stored in a cookie
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  done(null, user.dataValues.username);
 });
 
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
+// When user returns to site, we deserialize the cookie
+  // Find the user by username
+  // reinit session
+passport.deserializeUser(function(username, done) {
+  findUserByUsername(username).then(function (user) {
+    done(null, user);
+  }).catch(function (err) {
+    done(err);
+  });
 });
 
 passport.use(new GitHubStrategy({
@@ -35,7 +44,7 @@ passport.use(new GitHubStrategy({
     // Passport's code
     process.nextTick(function () {
       // We get user then pass it to done
-      getUser(profile).then(function(user) {
+      findOrCreateUser(profile).then(function(user) {
         done(null, user);
       }).catch(function(err) {
         console.log(err);

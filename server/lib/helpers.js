@@ -6,7 +6,7 @@ var Snippet = db.Snippet;
 
 
 module.exports = {
-  getUser: function (profile) {
+  findOrCreateUser: function (profile) {
     return new Promise(function (resolve, reject) {
       db.User.findOrCreate({
         where: {
@@ -16,6 +16,20 @@ module.exports = {
       }).spread(function (user, created) {
         resolve(user, created);
       }).catch(reject);
+    });
+  },
+
+  findUserByUsername: function (username) {
+    return new Promise(function (resolve, reject) {
+      db.User.findOne({
+        where: {
+          username: username
+        }
+      }).then(function (user) {
+        resolve(user);
+      }).catch(function (err) {
+        reject('Got an error: ', err);
+      });
     });
   },
 
