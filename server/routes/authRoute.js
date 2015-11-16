@@ -12,4 +12,4 @@ module.exports = function (app) {
     authController.githubAuthCallback
   );
   app.get('/logout', authController.logout);
-}
+};
