@@ -15,6 +15,7 @@ angular.module('sniphub.services', [])
       console.log('Error in getting snippets from db');
     });
   };
+
   var addSnippet = function ( user, text, title, tabPrefix, scope, forkedFrom ) {
     forkedFrom = forkedFrom || null;
 
@@ -31,10 +32,32 @@ angular.module('sniphub.services', [])
         "forkedFrom" : forkedFrom
        }
     }).then(function successCallback ( response ) {
-      console.log("after success")
+      console.log("after success");
       return response;
     });
   };
+
+  var updateSnippet = function ( snippetId, user, text, title, tabPrefix, scope, forkedFrom ) {
+    forkedFrom = forkedFrom || null;
+    return $http({
+      method: 'POST',
+      url: '/api/user/' + user + '/' + snippetId,
+      data: {
+        "username" : user,
+        "text" : text,
+        "tabPrefix" : tabPrefix,
+        "title" : title,
+        "scope" : scope,
+        "tags" : [],
+        "forkedFrom" : forkedFrom
+       }
+    }).then(function successCallback ( response ) {
+      console.log("after success")
+      return response;
+    });
+
+  };
+
   var fetchByUser = function ( user ) {
     // /api/user/:userId ->
     return $http({
@@ -47,6 +70,18 @@ angular.module('sniphub.services', [])
       console.log('Error in getting snippets from db');
     });
   };
+
+  var fetchBySnippetId = function ( user, id ) {
+    return $http({
+      method: 'GET',
+      url: '/api/user/' + user + '/' + id
+    }).then(function successCallback ( response ) {
+      return response;
+    }, function errorCallback ( response ) {
+      console.log('Error in getting snippets from db')
+    });
+  };
+
   var searchByTerm = function ( term ) {
     return $http({
       method: 'POST',
@@ -60,6 +95,8 @@ angular.module('sniphub.services', [])
     });
   };
   return {
+    updateSnippet: updateSnippet,
+    fetchBySnippetId: fetchBySnippetId,
     fetchTopTen : fetchTopTen,
     addSnippet : addSnippet,
     fetchByUser: fetchByUser,
