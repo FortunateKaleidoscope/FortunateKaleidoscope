@@ -4,6 +4,8 @@ angular.module('sniphub.auth', ['sniphub.services'])
   $scope.isAuth = false;
   var checkAuth = function () {
     $scope.isAuth = !!Auth.isAuth( "isAuth" );
+    $scope.username = Auth.isAuth( "username" );
   };
+
   checkAuth();
 });
