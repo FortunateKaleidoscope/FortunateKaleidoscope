@@ -1,6 +1,6 @@
 <div ng-controller='EditSnippetController' id='container'>
   <div class="row">
-    <form class="col s12" ng-submit='postSnippet(userField, inputEntry, titleField , tabField, scope)'name ="AddSnippetForm">
+    <form class="col s12" ng-submit='updateSnippet($scope.params.snippetId, userField, inputEntry, titleField , tabField, scope)'name ="AddSnippetForm">
       <div class="row">
         <div class="input-field col s12">
           <input required id="last_name" type="text" class="validate text" type="text" name="text" ng-model='titleField'>
