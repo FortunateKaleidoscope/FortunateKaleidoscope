@@ -3,6 +3,7 @@ angular.module('sniphub.snippets', ['hljs'])
 
 .controller('SnippetsController', function (Auth, $scope, $location, SniphubServices) {
   $scope.snippets = [];
+  
   $scope.fetchTopTen = function () {
     //call factory function
     SniphubServices.fetchTopTen()
@@ -13,7 +14,12 @@ angular.module('sniphub.snippets', ['hljs'])
           item.title = unescape(item.title);
         });
       });
+  };
 
+  $scope.forkSnippet = function ( user, text, title, tabPrefix, scope, forkedFrom ) {
+    SniphubServices.addSnippet( user, text, title, tabPrefix, scope, forkedFrom ).then(function ( response ) {
+      $scope.fetchTopTen();
+    });
   };
 
   // EXTRA CREDIT
