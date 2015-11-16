@@ -15,8 +15,9 @@ angular.module('sniphub.services', [])
       console.log('Error in getting snippets from db');
     });
   };
-  var addSnippet = function ( user, text, title, tabPrefix, scope ) {
-    //tags should be an array
+  var addSnippet = function ( user, text, title, tabPrefix, scope, forkedFrom ) {
+    forkedFrom = forkedFrom || null;
+
     return $http({
       method: 'POST',
       url: '/api/snippet',
@@ -27,6 +28,7 @@ angular.module('sniphub.services', [])
         "title" : title,
         "scope" : scope,
         "tags" : [],
+        "forkedFrom" : forkedFrom
        }
     }).then(function successCallback ( response ) {
       console.log("after success")
@@ -65,14 +67,14 @@ angular.module('sniphub.services', [])
   };
 })
 .factory('Auth', function ($http, $location, $window) {
-  //**fix this to work with YiLen's stuff**
 
-  var isAuth = function () {
+  //Parse the cookie based on parameter and return the result
+  var isAuth = function ( parameter ) {
     var isAuth = document.cookie.split( ';' )
                 .map( function( x ) { return x.trim().split( '=' ); } )
                 .reduce(function( a, b ) { a[ b[ 0 ] ] = b[ 1 ]; return a; },
-                {} )[ "isAuth" ];
-    return isAuth === 'true' ? true : false;
+                {} )[ parameter ];
+    return isAuth;
   };
 
 

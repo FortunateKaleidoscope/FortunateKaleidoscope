@@ -42,13 +42,15 @@ module.exports = {
     var languageScope = req.body.scope;
     var snipTitle = escape(req.body.title);
     var tab = escape(req.body.tabPrefix);
+    var forkedFrom = req.body.forkedFrom;
     // Building snippet object to create
     var post = {
       text: snippet,
       forkedCount: 0,
       tabPrefix: tab,
       title: snipTitle,
-      scope: languageScope
+      scope: languageScope,
+      forkedFrom: forkedFrom
     };
     // Retrieves user name from request
     var user = req.user.username;
