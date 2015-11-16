@@ -3,16 +3,83 @@
     <form class="col s12" ng-submit='postSnippet(userField, inputEntry, titleField , tabField, scope)'name ="AddSnippetForm">
       <div class="row">
         <div class="input-field col s12">
-          <input required id="last_name" type="text" class="validate text" type="text" name="text" ng-model='titleField'>
+          <input required type="text" class="validate text" type="text" name="text" ng-model='titleField'>
           <label for="last_name">Title</label>
         </div>
         <div class="input-field col s6">
-          <input required id="last_name" type="text" class="validate text" type="text" name="text" ng-model='tabField'>
-          <label for="last_name">Tab Prefix</label>
+          <!-- Dropdown Trigger -->
+          <a required ng-model='scope' class='dropdown-button btn' href='#' data-activates='dropdown1'>Scope</a>
+          <!-- Dropdown Structure -->
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="#!">ActionScript</a></li>
+            <li><a href="#!">AppleScript</a></li>
+            <li><a href="#!">ASP</a></li>
+            <li><a href="#!">Batch FIle</a></li>
+            <li><a href="#!">C#</a></li>
+            <li><a href="#!">C++</a></li>
+            <li><a href="#!">Clojure</a></li>
+            <li><a href="#!">CoffeeScript</a></li>
+            <li><a href="#!">CSS</a></li>
+            <li><a href="#!">D</a></li>
+            <li><a href="#!">Diff</a></li>
+            <li><a href="#!">Erlang</a></li>
+            <li><a href="#!">Go</a></li>
+            <li><a href="#!">GraphViz</a></li>
+            <li><a href="#!">Groovy</a></li>
+            <li><a href="#!">Haskell</a></li>
+            <li><a href="#!">HTML</a></li>
+            <li><a href="#!">JSP</a></li>
+            <li><a href="#!">Java</a></li>
+            <li><a href="#!">Java Properties</a></li>
+            <li><a href="#!">Java Doc</a></li>
+            <li><a href="#!">JSON</a></li>
+            <li><a href="#!">Javascript</a></li>
+            <li><a href="#!">BibTex</a></li>
+            <li><a href="#!">Latex Log</a></li>
+            <li><a href="#!">Latex Memoir</a></li>
+            <li><a href="#!">Latex</a></li>
+            <li><a href="#!">LESS</a></li>
+            <li><a href="#!">TeX</a></li>
+            <li><a href="#!">Lisp</a></li>
+            <li><a href="#!">Lua</a></li>
+            <li><a href="#!">MakeFile</a></li>
+            <li><a href="#!">Markdown</a></li>
+            <li><a href="#!">Multi Markdown</a></li>
+            <li><a href="#!">Matlab</a></li>
+            <li><a href="#!">Objective-C</a></li>
+            <li><a href="#!">Objective-C++</a></li>
+            <li><a href="#!">OCaml campl4</a></li>
+            <li><a href="#!">OCaml</a></li>
+            <li><a href="#!">OCamllex</a></li>
+            <li><a href="#!">Perl</a></li>
+            <li><a href="#!">PHP</a></li>
+            <li><a href="#!">Regular Expression(python)</a></li>
+            <li><a href="#!">Python</a></li>
+            <li><a href="#!">R Console</a></li>
+            <li><a href="#!">R</a></li>
+            <li><a href="#!">Ruby on Rails</a></li>
+            <li><a href="#!">Ruby HAML</a></li>
+            <li><a href="#!">SQL(Ruby)</a></li>
+            <li><a href="#!">Regular Expression</a></li>
+            <li><a href="#!">RestructuredText</a></li>
+            <li><a href="#!">Ruby</a></li>
+            <li><a href="#!">SASS</a></li>
+            <li><a href="#!">Scala</a></li>
+            <li><a href="#!">Shell Script</a></li>
+            <li><a href="#!">SQL</a></li>
+            <li><a href="#!">Stylus</a></li>
+            <li><a href="#!">TCL</a></li>
+            <li><a href="#!">HTML(TCL)</a></li>
+            <li><a href="#!">Plain text</a></li>
+            <li><a href="#!">Textile</a></li>
+            <li><a href="#!">XML</a></li>
+            <li><a href="#!">XSL</a></li>
+            <li><a href="#!">YAML</a></li>
+          </ul>
         </div>
         <div class="input-field col s6">
-          <input required id="last_name" type="text" class="validate text" type="text" name="text" ng-model='scope'>
-          <label for="last_name">Scope</label>
+          <input required type="text" class="validate text" type="text" name="text" ng-model='tabField'>
+          <label for="last_name">Tab Prefix</label>
         </div>
         <div class="input-field col s12">
 
@@ -22,13 +89,25 @@
           <label for="textarea1">Snippet</label>
         </div>
         <button class="btn waves-effect waves-light orange grey-text text-darken-4" type="submit" name="action">Add Snippet
-        <i class="material-icons right">send</i>
+        <i class="material-icons right"></i>
         </button>
       </div>
     </form>
   </div>
 </div>
 
+<script type="text/javascript">
+  $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+  );
+</script>
 
 
 <!-- can use for error messages later:
