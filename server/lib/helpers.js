@@ -68,7 +68,7 @@ module.exports = {
   },
 
   getSnippet: function(snippetID) {
-    return Snippet.findAll({
+    return Snippet.findOne({
       where: {
         id: snippetID
       },
@@ -76,11 +76,22 @@ module.exports = {
         model: User
       }]
     }).then(function (result) {
-
       return result;
     });
   },
 
+  updateSnippet: function (req) {
+    this.getSnippet(req.id).then(function (snip) {
+      return snip.update(req.body, {
+        fields: [
+          'text',
+          'tabPrefix',
+          'title',
+          'scope'
+        ]
+      });
+    });
+  },
   getSnippetsMostRecent: function () {
     //Search all snippets, limit 10, ordered by createdAt date
     return Snippet.findAll({

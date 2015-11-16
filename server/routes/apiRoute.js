@@ -2,7 +2,7 @@
 // /api route
 var express = require('express');
 var apiController = require('../controller/apiController');
-var authMiddleware = require('../config/authMiddleware');
+var authMiddleware = require('../config/authMiddleware').authMiddleware;
 var userRoute = express.Router();
 
 module.exports = function (app) {
