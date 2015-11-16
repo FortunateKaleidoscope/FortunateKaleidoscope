@@ -1,6 +1,4 @@
-//this file is all done ---- dont mess with it
-
-angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.snippets','sniphub.addSnippet', 'sniphub.auth', 'sniphub.snippetsUser'])
+angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.snippets','sniphub.addSnippet', 'sniphub.auth', 'sniphub.snippetsUser', 'snipphub.editSnippet'])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
   $urlRouterProvider.otherwise('snippets');
   $stateProvider
@@ -20,9 +18,16 @@ angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.sni
     })
     .state('users', {
       url: '/users/:id',
-      controller: "snippetsUserController",
+      controller: 'snippetsUserController',
       views: {
         'main' : { templateUrl: 'html/snippetUser.html'}
+      }
+    })
+    .state('editSnippet', {
+      url: 'users/:id/:snippetId',
+      controller: 'EditSnippetController',
+      views: {
+        'main' : { templateUrl: 'html/editSnippet.html' }
       }
     });
 
