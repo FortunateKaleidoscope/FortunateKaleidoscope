@@ -1,6 +1,6 @@
 'use strict';
-var passport = require('../passport');
-var authController = require('../../controller/authController');
+var passport = require('../config/passport');
+var authController = require('../controller/authController');
 
 module.exports = function (app) {
   app.get('/github',
