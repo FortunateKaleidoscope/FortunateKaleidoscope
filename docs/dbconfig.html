@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>dbconfig.js</title>
+  <title>Database configuration</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -20,8 +20,13 @@
             <div id="jump_page">
               
                 
-                <a class="source" href="hello.html">
-                  hello.js
+                <a class="source" href="app.html">
+                  app.js
+                </a>
+              
+                
+                <a class="source" href="authMiddleware.html">
+                  authMiddleware.js
                 </a>
               
                 
@@ -35,6 +40,26 @@
                 </a>
               
                 
+                <a class="source" href="apiController.html">
+                  apiController.js
+                </a>
+              
+                
+                <a class="source" href="authController.html">
+                  authController.js
+                </a>
+              
+                
+                <a class="source" href="publicController.html">
+                  publicController.js
+                </a>
+              
+                
+                <a class="source" href="userController.html">
+                  userController.js
+                </a>
+              
+                
                 <a class="source" href="dbconfig.html">
                   dbconfig.js
                 </a>
@@ -45,8 +70,48 @@
                 </a>
               
                 
+                <a class="source" href="helpers.html">
+                  helpers.js
+                </a>
+              
+                
+                <a class="source" href="promises.html">
+                  promises.js
+                </a>
+              
+                
                 <a class="source" href="secrets.html">
                   secrets.js
+                </a>
+              
+                
+                <a class="source" href="sublimeSnippetGenerator.html">
+                  sublimeSnippetGenerator.js
+                </a>
+              
+                
+                <a class="source" href="utils.html">
+                  utils.js
+                </a>
+              
+                
+                <a class="source" href="apiRoute.html">
+                  apiRoute.js
+                </a>
+              
+                
+                <a class="source" href="authRoute.html">
+                  authRoute.js
+                </a>
+              
+                
+                <a class="source" href="publicRoute.html">
+                  publicRoute.js
+                </a>
+              
+                
+                <a class="source" href="userRoute.html">
+                  userRoute.js
                 </a>
               
             </div>
@@ -56,12 +121,6 @@
     
     <ul class="sections">
         
-          <li id="title">
-              <div class="annotation">
-                  <h1>dbconfig.js</h1>
-              </div>
-          </li>
-        
         
         
         <li id="section-1">
@@ -70,42 +129,134 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              
+              <h1 id="database-configuration">Database configuration</h1>
+
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mysql = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mysql'</span>);
-<span class="hljs-keyword">var</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);
-<span class="hljs-keyword">var</span> secret = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/secrets'</span>).sql
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>We use sequelize ORM to connect to MySql database.
+Credentials for the database are stored in /lib/secrets.js
+To use with your own database recreate the file and export an
+object with the key ‘sql’ and your password as the value</p>
 
-<span class="hljs-keyword">var</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(<span class="hljs-string">'sniphub'</span>, <span class="hljs-string">'root'</span>, secret);
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Declare dependencies</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> Sequelize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'sequelize'</span>);
+<span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">'production'</span>) {
+  <span class="hljs-built_in">console</span>.log(process.env.CLEARDB_DATABASE_URL);
+  <span class="hljs-keyword">var</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(process.env.CLEARDB_DATABASE_URL);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-keyword">var</span> secret = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/secrets'</span>).sql;
+  <span class="hljs-keyword">var</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(<span class="hljs-string">'sniphub'</span>, <span class="hljs-string">'root'</span>, secret);
+}
+<span class="hljs-keyword">var</span> mysql = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mysql'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Connection to MySql database using database named sniphub</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
 
 
-<span class="hljs-keyword">var</span> User = sequelize.define(<span class="hljs-string">'User'</span>, {
+<span class="hljs-keyword">var</span> User = sequelize.define(<span class="hljs-string">'users'</span>, {
   username: {
     type: Sequelize.STRING,
     unique: <span class="hljs-literal">true</span>
   },
-  password: Sequelize.STRING,
   imgUrl: Sequelize.STRING
 });
 
-<span class="hljs-keyword">var</span> Snippets = sequelize.define(<span class="hljs-string">'Snippets'</span>, {
+<span class="hljs-keyword">var</span> Snippet = sequelize.define(<span class="hljs-string">'snippets'</span>, {
   text : Sequelize.STRING,
-  forkedCount : Sequelize.INTEGER
+  forkedCount : Sequelize.INTEGER,
+  tabPrefix : Sequelize.STRING,
+  title : Sequelize.STRING,
+  scope : Sequelize.STRING,
+  forkedFrom : Sequelize.STRING
 });
 
-<span class="hljs-keyword">var</span> Tags = sequelize.define(<span class="hljs-string">'Tags'</span>, {
-  tagname: Sequelize.STRING
+<span class="hljs-keyword">var</span> Tag = sequelize.define(<span class="hljs-string">'tags'</span>, {
+  tagname: {
+    type: Sequelize.STRING,
+    unique: <span class="hljs-literal">true</span>
+  }
 });
 
-User.hasMany(Snippets);
-Snippets.belongsTo(User);
-Snippets.hasMany(Tags);
-Tags.hasMany(Snippets);
+sequelize
+  .sync()
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'It worked!'</span>);
+  }, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'An error occurred while creating the table:'</span>, err);
+  });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Creates one to many relationship between User and Snippets table</p>
 
-User.sync();
-Snippets.sync();
-Tags.sync();</pre></div></div>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Snippet.belongsTo(User, {foreignKey: <span class="hljs-string">'userId'</span>});
+User.hasMany(Snippet, {foreignKey: <span class="hljs-string">'userId'</span>});
+Snippet.belongsToMany(Tag, { through: <span class="hljs-string">'snippet_tag'</span>});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Creates many to many relationship between Snippets and Taga</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Tag.belongsToMany(Snippet, { through: <span class="hljs-string">'snippet_tag'</span>});
+
+<span class="hljs-built_in">module</span>.exports = {
+  User: User,
+  Snippet: Snippet,
+  Tag: Tag,
+};</pre></div></div>
             
         </li>
         

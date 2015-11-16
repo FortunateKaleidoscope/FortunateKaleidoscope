@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.js</title>
+  <title>sublimeSnippetGenerator.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -123,7 +123,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.js</h1>
+                  <h1>sublimeSnippetGenerator.js</h1>
               </div>
           </li>
         
@@ -138,11 +138,21 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./app'</span>);
-<span class="hljs-keyword">var</span> port = process.env.PORT || <span class="hljs-number">3000</span>;
-app.listen(port, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listening on '</span> + port);
-});</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
+
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">snipObj</span>) </span>{
+  <span class="hljs-keyword">var</span> snippet = <span class="hljs-built_in">unescape</span>(snipObj.text);
+  <span class="hljs-keyword">var</span> tabPrefix = <span class="hljs-built_in">unescape</span>(snipObj.tabPrefix);
+  <span class="hljs-keyword">var</span> scope = snipObj.scope !== <span class="hljs-literal">undefined</span> ?  <span class="hljs-string">"&lt;scope&gt;scope."</span> + snipObj.scope + <span class="hljs-string">"&lt;/scope&gt;"</span> : <span class="hljs-string">''</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;snippet&gt;\n"</span> +
+    <span class="hljs-string">"&lt;content&gt;&lt;![CDATA[\n"</span>+
+    snippet +
+    <span class="hljs-string">"\n]]&gt;&lt;/content&gt;\n"</span> +
+    <span class="hljs-string">"&lt;tabTrigger&gt;"</span> + tabPrefix + <span class="hljs-string">"&lt;/tabTrigger&gt;\n"</span>+
+    scope +
+    <span class="hljs-string">"\n&lt;/snippet&gt;"</span>;
+
+};</pre></div></div>
             
         </li>
         

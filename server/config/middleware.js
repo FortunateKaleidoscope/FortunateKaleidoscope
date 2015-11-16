@@ -25,7 +25,7 @@ module.exports = function (app, express) {
   app.use(session({
     secret: SESSION_SECRET,
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: true
   }));
 
   // Uses cookies for client side to use

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>index.js</title>
+  <title>authMiddleware.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -123,7 +123,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>index.js</h1>
+                  <h1>authMiddleware.js</h1>
               </div>
           </li>
         
@@ -138,11 +138,57 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./app'</span>);
-<span class="hljs-keyword">var</span> port = process.env.PORT || <span class="hljs-number">3000</span>;
-app.listen(port, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listening on '</span> + port);
-});</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
+<span class="hljs-keyword">var</span> getSnippet = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/helpers'</span>).getSnippet;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Checks to see if user is authenticated</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>exports.authMiddleware = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(req.session);
+  <span class="hljs-built_in">console</span>.log(req.isAuthenticated());
+  <span class="hljs-keyword">if</span> (req.isAuthenticated()) { <span class="hljs-keyword">return</span> next(); }
+  res.redirect(<span class="hljs-string">'/'</span>);
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Check to see if snippet belongs to user</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>exports.confirmUserSnippet = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>{
+  <span class="hljs-keyword">var</span> snippetID = req.params.snippetID;
+  <span class="hljs-keyword">var</span> username = req.params.username;
+  getSnippet(<span class="hljs-built_in">parseInt</span>(snippetID)).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">snip</span>) </span>{
+    <span class="hljs-keyword">var</span> snipJSON = snip.toJSON();
+    <span class="hljs-keyword">if</span> (username === snip.user.username) {
+      req.snippetJSON = snipJSON;
+      next();
+    } <span class="hljs-keyword">else</span> {
+      res.redirect(<span class="hljs-string">'/'</span>);
+    }
+  }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    res.redirect(<span class="hljs-string">'/'</span>);
+  });
+};</pre></div></div>
             
         </li>
         
