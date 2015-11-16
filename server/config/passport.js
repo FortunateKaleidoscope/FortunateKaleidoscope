@@ -21,14 +21,16 @@ var findUserByUsername = require('../lib/helpers').findUserByUsername;
 
 // Serializes user information to be stored in a cookie
 passport.serializeUser(function(user, done) {
+  console.log(user);
   done(null, user);
 });
 
 // When user returns to site, we deserialize the cookie
   // Find the user by username
   // reinit session
-passport.deserializeUser(function(username, done) {
-  done(null, username);
+passport.deserializeUser(function(obj, done) {
+  console.log('deserializeUser ', obj);
+  done(null, obj);
 });
 
 passport.use(new GitHubStrategy({
