@@ -4,7 +4,6 @@ var helpers = require('../lib/helpers');
 
 module.exports = {
   getTopTen: function (req, res) {
-    console.log(req.user);
     helpers.getSnippetsMostRecent().then(function (snips) {
       var resSnips = snips.map(function (snip) {
         return snip.toJSON();
