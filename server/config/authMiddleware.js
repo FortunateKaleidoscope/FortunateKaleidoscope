@@ -17,8 +17,7 @@ exports.confirmUserSnippet = function (req, res, next) {
     getSnippet(parseInt(snippetID)).then(function (snip) {
       var snipJSON = snip.toJSON();
       if (username === snip.user.username) {
-        req.snippetJSON = snip;
-        // req.snip = snip
+        req.snippetJSON = snipJSON;
         next();
       } else {
         res.redirect('/');
