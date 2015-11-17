@@ -9,7 +9,7 @@ describe('Should download files', function(){
       .get('/download/1')
       .expect(200, done);
   });
-  it('should have route for users snippets', function(done){
+  xit('should have route for users snippets', function(done){
     request(app)
       .get('/api/user/yilenpan/download')
       .expect(200, done);
