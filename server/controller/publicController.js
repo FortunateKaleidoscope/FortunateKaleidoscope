@@ -20,7 +20,7 @@ module.exports = {
                 }
                 utils.cleanFolder(folder);
               });
-            })
+            });
            })
           .catch(function (err) {
            res.redirect('/');
