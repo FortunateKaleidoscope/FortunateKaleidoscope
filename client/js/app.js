@@ -1,6 +1,6 @@
-'use strict';
-angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.snippets','sniphub.addSnippet', 'sniphub.auth', 'sniphub.snippetsUser', 'sniphub.editSnippet'])
-.config(function($stateProvider, $urlRouterProvider){
+angular.module('sniphub', ['ngRoute','ui.router','sniphub.services','sniphub.snippets','sniphub.addSnippet', 'sniphub.auth', 'sniphub.snippetsUser','sniphub.editSnippet','sniphub.angular-ellipsis'])
+.config(function($stateProvider, $urlRouterProvider, $httpProvider){
+
   $urlRouterProvider.otherwise('snippets');
   $stateProvider
     .state('snippets', {

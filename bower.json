@@ -24,6 +24,7 @@
     "angular-sanitize": "~1.4.7",
     "angular-ui-router": "~0.2.15",
     "jquery": "~2.1.4",
-    "Materialize": "materialize#~0.97.2"
+    "Materialize": "materialize#~0.97.2",
+    "angular-ellipsis": "~0.1.6"
   }
 }
