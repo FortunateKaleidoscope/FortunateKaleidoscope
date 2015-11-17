@@ -1,24 +1,26 @@
 angular.module('sniphub.editSnippet', [])
 
-.controller('EditSnippetController', function ( Auth, $scope, $state, $stateParams, $location, SniphubServices ) {
+.controller('EditSnippetController', function (Auth, $scope, $state, $stateParams, $location, SniphubServices) {
   
   $scope.params = $stateParams;
 
-  $scope.fetchSnippetById = function ( user, id ) {
+  $scope.fetchSnippetById = function (user, id) {
   //fetch the snippet by provided snippet id;
-    SniphubServices.fetchBySnippetId( user, id ).then(function ( snippet ) {
-      $scope.snippet = snippet.data
+    SniphubServices.fetchBySnippetId( user, id ).then(function (snippet) {
+      //Populates input fields with data from snippet
+      $scope.snippet = snippet.data;
       $scope.inputEntry = unescape($scope.snippet.text);
       $scope.titleField = $scope.snippet.title;
       $scope.tabField = $scope.snippet.tabPrefix;
       $scope.scope = $scope.snippet.scope;
-      $scope.userField = Auth.isAuth("username");
+      $scope.userField = Auth.isAuth('username');
       $scope.snippetId = $scope.snippet.id;
     });
   };
 
-  $scope.updateSnippet = function ( snippetId, user, text, title, tabPrefix, scope  ) {
-    SniphubServices.updateSnippet( snippetId, user, text, title, tabPrefix, scope ).then(function ( response ) {
+  $scope.updateSnippet = function (snippetId, user, text, title, tabPrefix, scope) {
+    SniphubServices.updateSnippet(snippetId, user, text, title, tabPrefix, scope).then(function (response) {
+      // changes state on completion
       $state.go('snippets');
     });
   };
