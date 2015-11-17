@@ -9,10 +9,8 @@ var rootFolder = require('../../rootPath');
 // when it finds the Snippet, it writes it to file, then sends it out as a download
 module.exports = {
   downloadSnippet: function (req, res) {
-    console.log('INSIDE DOWNLOADSNIPPET');
     var snippetID = req.params.snippetId;
     var folder = rootFolder + '/server/tmp/' + Date.now() + '/';
-    console.log(folder);
     helpers.getSnippet(snippetID)
            .then(function (result) {
              utils.writeSnippetFile(result.toJSON(), folder).then(function(file){

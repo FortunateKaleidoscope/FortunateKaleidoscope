@@ -21,7 +21,6 @@ var findUserByUsername = require('../lib/helpers').findUserByUsername;
 
 // Serializes user information to be stored in a cookie
 passport.serializeUser(function(user, done) {
-  console.log(user);
   done(null, user);
 });
 
@@ -29,7 +28,6 @@ passport.serializeUser(function(user, done) {
   // Find the user by username
   // reinit session
 passport.deserializeUser(function(obj, done) {
-  console.log('deserializeUser ', obj);
   done(null, obj);
 });
 
