@@ -6,73 +6,73 @@
           <input required type="text" class="validate text" type="text" name="text" ng-model='titleField'>
           <label for="last_name">Title</label>
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s6" ng-model="scope">
           <select>
             <option value="" disabled selected>Choose Scope</option>
-            <option value="ActionScript">ActionScript</option>
-            <option value="AppleScript">AppleScript</option>
-            <option value="ASP">ASP</option>
-            <option value="Batch FIle">Batch FIle</option>
-            <option value="C#">C#</option>
-            <option value="C++">C++</option>
-            <option value="Clojure">Clojure</option>
-            <option value="CoffeeScript">CoffeeScript</option>
-            <option value="CSS">CSS</option>
-            <option value="D">D</option>
-            <option value="Diff">Diff</option>
-            <option value="Erlang">Erlang</option>
-            <option value="Go">Go</option>
-            <option value="GraphViz">GraphViz</option>
-            <option value="Groovy">Groovy</option>
-            <option value="Haskell">Haskell</option>
-            <option value="HTML">HTML</option>
-            <option value="JSP">JSP</option>
-            <option value="Java">Java</option>
-            <option value="Java Properties">Java Properties</option>
-            <option value="Java Doc">Java Doc</option>
-            <option value="JSON">JSON</option>
-            <option value="Javascript">Javascript</option>
-            <option value="BibTex">BibTex</option>
-            <option value="Latex Log">Latex Log</option>
-            <option value="Latex Memoir">Latex Memoir</option>
-            <option value="Latex">Latex</option>
-            <option value="LESS">LESS</option>
-            <option value="TeX">TeX</option>
-            <option value="Lisp">Lisp</option>
-            <option value="Lua">Lua</option>
-            <option value="MakeFile">MakeFile</option>
-            <option value="Markdown">Markdown</option>
-            <option value="Multi Markdown">Multi Markdown</option>
-            <option value="Matlab">Matlab</option>
-            <option value="Objective-C">Objective-C</option>
-            <option value="Objective-C++">Objective-C++</option>
-            <option value="OCaml campl4">OCaml campl4</option>
-            <option value="OCaml">OCaml</option>
-            <option value="OCamllex">OCamllex</option>
-            <option value="Perl">Perl</option>
-            <option value="PHP">PHP</option>
-            <option value="Regular Expression(python)">Regular Expression(python)</option>
-            <option value="Python">Python</option>
-            <option value="R Console">R Console</option>
-            <option value="R">R</option>
-            <option value="Ruby on Rails">Ruby on Rails</option>
-            <option value="Ruby HAML">Ruby HAML</option>
-            <option value="SQL(Ruby)">SQL(Ruby)</option>
-            <option value="Regular Expression">Regular Expression</option>
-            <option value="RestructuredText">RestructuredText</option>
-            <option value="Ruby">Ruby</option>
-            <option value="SASS">SASS</option>
-            <option value="Scala">Scala</option>
-            <option value="Shell Script">Shell Script</option>
-            <option value="SQL">SQL</option>
-            <option value="Stylus">Stylus</option>
-            <option value="TCL">TCL</option>
-            <option value="HTML(TCL)">HTML(TCL)</option>
-            <option value="Plain text">Plain text</option>
-            <option value="Textile">Textile</option>
-            <option value="XML">XML</option>
-            <option value="XSL">XSL</option>
-            <option value="YAML">YAML</option>
+            <option value="source.actionscript.2" ng-model='scope'>ActionScript</option>
+            <option value="source.applescript" ng-model='scope'>AppleScript</option>
+            <option value="source.asp" ng-model='scope'>ASP</option>
+            <option value="source.dosbatch" ng-model='scope'>Batch FIle</option>
+            <option value="source.cs" ng-model='scope'>C#</option>
+            <option value="source.c++" ng-model='scope'>C++</option>
+            <option value="source.clojure" ng-model='scope'>Clojure</option>
+            <option value="source.coffee" ng-model='scope'>CoffeeScript</option>
+            <option value="source.css" ng-model='scope'>CSS</option>
+            <option value="source.d" ng-model='scope'>D</option>
+            <option value="source.diff" ng-model='scope'>Diff</option>
+            <option value="source.erlang" ng-model='scope'>Erlang</option>
+            <option value="source.go" ng-model='scope'>Go</option>
+            <option value="source.dot" ng-model='scope'>GraphViz</option>
+            <option value="source.groovy" ng-model='scope'>Groovy</option>
+            <option value="source.haskell" ng-model='scope'>Haskell</option>
+            <option value="text.html(.basic)" ng-model='scope'>HTML</option>
+            <option value="text.html.jsp" ng-model='scope'>JSP</option>
+            <option value="source.java" ng-model='scope'>Java</option>
+            <option value="source.java-props" ng-model='scope'>Java Properties</option>
+            <option value="text.html.javadoc" ng-model='scope'>Java Doc</option>
+            <option value="source.json" ng-model='scope'>JSON</option>
+            <option value="source.js" ng-model='scope'>Javascript</option>
+            <option value="source.bibtex" ng-model='scope'>BibTex</option>
+            <option value="text.log.latex" ng-model='scope'>Latex Log</option>
+            <option value="text.tex.latex.memoir" ng-model='scope'>Latex Memoir</option>
+            <option value="text.tex.latex" ng-model='scope'>Latex</option>
+            <option value="source.css.less" ng-model='scope'>LESS</option>
+            <option value="text.tex" ng-model='scope'>TeX</option>
+            <option value="source.lisp" ng-model='scope'>Lisp</option>
+            <option value="source.lua" ng-model='scope'>Lua</option>
+            <option value="source.makefile" ng-model='scope'>MakeFile</option>
+            <option value="text.html.markdown" ng-model='scope'>Markdown</option>
+            <option value="text.html.markdown.multimarkdown" ng-model='scope'>Multi Markdown</option>
+            <option value="source.matlab" ng-model='scope'>Matlab</option>
+            <option value="source.objc" ng-model='scope'>Objective-C</option>
+            <option value="source.objc++" ng-model='scope'>Objective-C++</option>
+            <option value="source.camlp4.ocaml" ng-model='scope'>OCaml campl4</option>
+            <option value="source.ocaml" ng-model='scope'>OCaml</option>
+            <option value="source.ocamllex" ng-model='scope'>OCamllex</option>
+            <option value="source.perl" ng-model='scope'>Perl</option>
+            <option value="source.php" ng-model='scope'>PHP</option>
+            <option value="source.regexp.python" ng-model='scope'>Regular Expression(python)</option>
+            <option value="source.python" ng-model='scope'>Python</option>
+            <option value="source.r-console" ng-model='scope'>R Console</option>
+            <option value="source.r" ng-model='scope'>R</option>
+            <option value="source.ruby.rails" ng-model='scope'>Ruby on Rails</option>
+            <option value="text.haml" ng-model='scope'>Ruby HAML</option>
+            <option value="source.sql.ruby" ng-model='scope'>SQL(Ruby)</option>
+            <option value="source.regexp" ng-model='scope'>Regular Expression</option>
+            <option value="text.restructuredtext" ng-model='scope'>RestructuredText</option>
+            <option value="source.ruby" ng-model='scope'>Ruby</option>
+            <option value="source.sass" ng-model='scope'>SASS</option>
+            <option value="source.scala" ng-model='scope'>Scala</option>
+            <option value="source.shell" ng-model='scope'>Shell Script</option>
+            <option value="source.sql" ng-model='scope'>SQL</option>
+            <option value="source.stylus" ng-model='scope'>Stylus</option>
+            <option value="source.tcl" ng-model='scope'>TCL</option>
+            <option value="text.html.tcl" ng-model='scope'>HTML(TCL)</option>
+            <option value="text.plain" ng-model='scope'>Plain text</option>
+            <option value="text.html.textile" ng-model='scope'>Textile</option>
+            <option value="text.xml" ng-model='scope'>XML</option>
+            <option value="text.xml.xsl" ng-model='scope'>XSL</option>
+            <option value="source.yaml" ng-model='scope'>YAML</option>
           </select>
           <label>Scope</label>
         </div>
