@@ -18,6 +18,9 @@ module.exports = function (app, express) {
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
 
+  // Uses cookies for client side to use
+  app.use(cookieParser());
+
   // Establish static route
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(process.cwd() + '/client'));
@@ -28,16 +31,16 @@ module.exports = function (app, express) {
   // Uses sessions
   app.use(session({
     secret: SESSION_SECRET,
-    resave: true,
-    saveUninitialized: false
+    resave: false,
+    saveUninitialized: false,
+    sessionid: function (req) {
+      return req.cookie.username;
+    }
   }));
 
   // Inits passport sessions
   app.use(passport.initialize());
   app.use(passport.session());
-
-  // Uses cookies for client side to use
-  app.use(cookieParser());
 
   // Set up routes
   var authRoute = express.Router();
