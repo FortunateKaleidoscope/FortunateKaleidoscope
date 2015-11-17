@@ -31,11 +31,10 @@ var zipFolder = function (srcPath, writePathZip) {
       zipArchiver.bulk([
         { src: [ '**/*' ], cwd: srcPath, expand: true }
       ]);
-      zipArchiver.finalize(function(err, bytes) {
-        if(err) {
+      zipArchiver.finalize(function (err) {
+        if (err) {
           reject(err);
         }
-        console.log('done:', base, bytes);
       });
     });
   });
@@ -47,4 +46,4 @@ module.exports = {
   zipFolder: zipFolder,
   mkpathAsync: mkpathAsync
 
-}
+};

@@ -9,12 +9,12 @@ var del = require('del');
 // makes the path then writes a generated znippet to the folder
 // returned as a promise.
 var writeSnippetFile = function (snipObj, outFolder) {
-  var fileName = escape(snipObj.title) + ".sublime-snippet";
+  var fileName = escape(snipObj.title) + '.sublime-snippet';
   var filePath = outFolder + fileName;
-  return mkpathAsync(outFolder).then(function(){
+  return mkpathAsync(outFolder).then(function () {
     return writeFile(filePath,
       sublimeSnippetTemplate(snipObj),
-      'utf8').then(function(){
+      'utf8').then(function () {
         return {filePath: filePath, fileName: fileName};
       });
   });

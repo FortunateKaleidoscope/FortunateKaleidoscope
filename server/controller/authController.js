@@ -10,6 +10,6 @@ module.exports = {
     req.logout();
     res.clearCookie('username');
     res.clearCookie('isAuth');
-    res.redirect('/')
+    res.redirect('/');
   }
 };

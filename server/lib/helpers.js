@@ -68,7 +68,7 @@ module.exports = {
     }).catch(cb);
   },
 
-  getSnippet: function(snippetID) {
+  getSnippet: function (snippetID) {
     return Snippet.findOne({
       where: {
         id: snippetID

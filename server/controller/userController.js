@@ -4,7 +4,6 @@ var rootFolder = require('../../rootPath');
 var Promise = require('bluebird');
 var helpers = require('../lib/helpers');
 var utils = require('../lib/utils');
-var dummyData = require('../../test/dummyData');
 
 module.exports = {
   userPage: function (req, res) {
@@ -22,7 +21,7 @@ module.exports = {
   },
   updateSnippet: function (req, res) {
     req.body.id = req.params.snippetID;
-    helpers.updateSnippet(req).then( function (result) {
+    helpers.updateSnippet(req).then(function (result) {
       res.json(result);
     }).catch(function (err) {
       console.log(err);
@@ -51,12 +50,12 @@ module.exports = {
         // when done, zip up folder
         utils.zipFolder(folder, zipFolder).then(function (zipFile) {
           // res download that bitch
-          res.download(zipFile, Date.now() + '.zip', function (err) {
+          res.download(zipFile, Date.now() + '.zip', function () {
             // on complete, delete the folder.
             utils.cleanFolder(folder);
             utils.cleanFolder(zipFolder);
           });
-        })
+        });
       }).catch(function (err) {
         res.sendStatus(501, err);
       });
