@@ -15,3 +15,6 @@ nav form {
   /*margin-left: 180px;*/
   width: 300px;
 }
+.hljs {
+  max-height: 120px;
+}
