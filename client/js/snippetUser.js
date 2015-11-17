@@ -10,7 +10,6 @@ $scope.fetchByUser = function ( user ) {
       .then(function ( snippets ) {
         $scope.snippets = snippets.data;
         $scope.username = snippets.data[0].user.username;
-        // console.log(snippets.data);
         $scope.snippets.forEach(function (item) {
           item.text = unescape(item.text);
           item.title = unescape(item.title);
