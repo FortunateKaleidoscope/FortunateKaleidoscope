@@ -27,8 +27,8 @@ passport.serializeUser(function(user, done) {
 // When user returns to site, we deserialize the cookie
   // Find the user by username
   // reinit session
-passport.deserializeUser(function(username, done) {
-  done(null, username);
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
 });
 
 passport.use(new GitHubStrategy({

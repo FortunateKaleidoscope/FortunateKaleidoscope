@@ -13,7 +13,7 @@ module.exports = {
     var folder = rootFolder + '/server/tmp/' + Date.now() + '/';
     helpers.getSnippet(snippetID)
            .then(function (result) {
-             utils.writeSnippetFile(result[0].toJSON(), folder).then(function(file){
+             utils.writeSnippetFile(result.toJSON(), folder).then(function(file){
                res.download(file.filePath, file.fileName, function (err) {
                  if (err) {
                    console.log(res.headersSent);

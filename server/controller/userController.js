@@ -32,7 +32,6 @@ module.exports = {
   downloadSnippets: function (req, res) {
     // Get username
     var username = req.params.username;
-    console.log(username);
     var folder = rootFolder + '/server/tmp/' + Date.now() + '/';
     var zipFolder = rootFolder + '/server/zip/' + Date.now() + '/';
       // getSnippetsByUser ->
