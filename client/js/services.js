@@ -17,6 +17,7 @@ angular.module('sniphub.services', [])
   };
 
   var addSnippet = function ( user, text, title, tabPrefix, scope, forkedFrom ) {
+    //If it doesn't have a forkedFrom, set to null
     forkedFrom = forkedFrom || null;
 
     return $http({

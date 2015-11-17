@@ -1,5 +1,5 @@
 'use strict';
-
+// This is builds the structure of the snippet for download
 module.exports = function (snipObj) {
   var snippet = unescape(snipObj.text);
   var tabPrefix = unescape(snipObj.tabPrefix);

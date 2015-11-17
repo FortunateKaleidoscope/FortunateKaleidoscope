@@ -37,6 +37,7 @@ var Snippet = sequelize.define('snippets', {
   forkedFrom : Sequelize.STRING
 });
 
+//TODO: Tag tables are inserted for later addition of tags
 var Tag = sequelize.define('tags', {
   tagname: {
     type: Sequelize.STRING,
@@ -55,8 +56,8 @@ sequelize
 // Creates one to many relationship between User and Snippets table
 Snippet.belongsTo(User, {foreignKey: 'userId'});
 User.hasMany(Snippet, {foreignKey: 'userId'});
-Snippet.belongsToMany(Tag, { through: 'snippet_tag'});
 // Creates many to many relationship between Snippets and Taga
+Snippet.belongsToMany(Tag, { through: 'snippet_tag'});
 Tag.belongsToMany(Snippet, { through: 'snippet_tag'});
 
 module.exports = {
