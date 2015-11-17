@@ -21,7 +21,6 @@ module.exports = {
     res.json(req.snippetJSON);
   },
   updateSnippet: function (req, res) {
-    console.log('Inside update snippet');
     req.body.id = req.params.snippetID;
     helpers.updateSnippet(req).then( function (result) {
       res.json(result);
