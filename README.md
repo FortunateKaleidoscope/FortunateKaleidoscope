@@ -32,6 +32,10 @@
 
 ## Development
 
+Start up your local mySQL database.
+Create database 'sniphub'.
+Change login credentials in dbconfig file, in server directory.
+
 ### Installing Dependencies
 
 From within the root directory:
